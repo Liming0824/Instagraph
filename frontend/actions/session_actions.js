@@ -7,10 +7,10 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_ERRORS';
 export const login = user => {
   return dispatch => {
     return APIUtil.login(user).then(user => {
-      return dispatch({type: RECEIVE_CURRENT_USER, user: user});
+       return dispatch({type: RECEIVE_CURRENT_USER, user: user});
     },
     errors => {
-      return dispatch({type: RECEIVE_SESSION_ERRORS, errors: errors});
+       return dispatch({type: RECEIVE_SESSION_ERRORS, errors: errors});
     }
   );
   };
