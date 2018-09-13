@@ -7,19 +7,18 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 //should change homepage file later on,
 import HomePageContainer from './homepage/home_page';
 // check back
-import LogoutUser from './logout_user/logout_user';
+import NavBar from './nav_bar/nav_bar';
 
 const App = () => {
   return (
     <div>
       <header>
-        <Route path='/' component={LogoutUser} />
-        <Switch>
-          <AuthRoute exact path="/login" component={GreetingContainer} />
-        </Switch>
-        <AuthRoute  exact path='/' component={GreetingContainer} />
-        <ProtectedRoute path='/homepage' component={HomePageContainer} />
+        <ProtectedRoute path='/' component={NavBar} />
       </header>
+
+      <AuthRoute exact path="/login" component={GreetingContainer} />
+      <AuthRoute  exact path='/' component={GreetingContainer} />
+      <ProtectedRoute path='/homepage' component={HomePageContainer} />
     </div>
   );
 }
