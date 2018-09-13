@@ -17,18 +17,118 @@
   .greeting_page{
     display: flex;
     margin: 0 auto;
-    width: 600px;
+    width: 800px;
 
   }
 
   .greeting_img {
-    width: 500px;
-    height: 500px;
-    margin-right: 20px;
+    width: 350px;
+    height: 580px;
+    margin-right: 50px;
+    margin-top: 40px;
   }
 
   .greeting_img img {
     width: 100%;
     height: 100%;
     border-radius: 40px;
+    margin-top: 70px;
+  }
+
+  .greeting_form h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+  }
+
+  .form_and_link{
+    border: 0px solid lightgrey;
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    margin-top: 40px;
+  }
+
+  .greeting_form{
+    border: 1px solid lightgrey;
+    margin: 20px;
+    height: 580px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .another_option_link{
+    margin: 20px;
+    padding: 30px;
+    /* height: 9px; */
+    border: 1px solid lightgrey;
+  }
+
+  .greeting_form form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: center;
+    /* the next two line is for center the items and list out */
+    flex-direction: column;
+    display: flex;
+
+  }
+
+  .greeting_form form input{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+
+  .greeting_form form button{
+    padding: 10px;
+    margin: 5px;
+    background-color: #3897f0;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .greeting_form .by_signup {
+    color: #999;
+    font-weight: 600;
+    margin: 10px 60px;
+    text-align: center;
+  }
+
+  .greeting_form .signup_purpose {
+    color: #999;
+    font-size: 17px;
+    font-weight: 900;
+    margin: 10px 60px;
+    text-align: center;
+  }
+
+  .another_option_link{
+    text-align: center;
+  }
+  .another_option_link Link{
+    text-decoration: none;
+  }
+
+  .demo-button{
+    padding: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: #809fff;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+
+  }
+
+  .error-messages{
+    width: 100%;
+    height: 20px;
+    color: red;
   }

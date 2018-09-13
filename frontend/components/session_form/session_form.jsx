@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -10,13 +11,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  navigateToPage(){
-    this.props.history.push('/homepage');
-  }
 
-  handleSubmit(e) {
+  handleSubmit(e){
     e.preventDefault();
-    this.props.processForm(this.state).then(this.navigateToPage.bind(this))
+    this.props.processForm(this.state).then(()=> this.props.history.push('/homepage'));
   }
 
   updateUsername(e){
@@ -42,9 +40,9 @@ class SessionForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type='text' value={this.state.username} onChange={this.updateUsername.bind(this)} placeholder='Username'/>
-        <input type='password' value={this.state.password} onChange={this.updatePW.bind(this)} placeholder='Password'/>
-        <button>{this.props.formType}</button>
+          <input required type='text' value={this.state.username} onChange={this.updateUsername.bind(this)} placeholder='Username'/>
+          <input required type='password' value={this.state.password} onChange={this.updatePW.bind(this)} placeholder='Password'/>
+          <button>{this.props.formType}</button>
       </form>
     );
   }
