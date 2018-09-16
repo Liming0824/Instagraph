@@ -21,7 +21,7 @@ class Greeting extends React.Component {
           <div className='greeting_img'>
             <img src={window.openPage} />
           </div>
-
+          <img className='open-page-gif'src={window.openPageGIF} />
           <div className='form_and_link'>
             <div className='greeting_form'>
               <h1>Instagraph</h1>
@@ -41,6 +41,7 @@ class Greeting extends React.Component {
           <div className='greeting_img'>
              <img src={window.openPage} />
           </div>
+          <img className='open-page-gif'src={window.openPageGIF} />
           <div className='form_and_link'>
             <div className='greeting_form'>
               <h1>Instagraph</h1>
@@ -75,8 +76,12 @@ class Greeting extends React.Component {
         </section>
       );
     }else{
+      let loginclass;
+      if (this.props.location.pathname === '/login'){
+        loginclass = 'login-greeting';
+      }
       return(
-        <div>
+        <div className={loginclass}>
           {returnForm}
         </div>
       );

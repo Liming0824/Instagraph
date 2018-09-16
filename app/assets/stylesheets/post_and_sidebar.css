@@ -1,0 +1,100 @@
+.posts-body{
+  border: 1px solid lightgrey;
+}
+
+.post-top-comment{
+  margin-bottom: 60px;
+  border: 1px solid black;
+}
+
+.post-top-comment .post-top{
+  border: 1px solid lightgrey;
+  width: 605px;
+  height: 50px;
+}
+
+
+.post-item-box{
+  width: 605px;
+  height: 605px;;
+  /* padding: 50px 0px 50px 0px; */
+  border: 1px solid lightgrey;
+  /* margin-bottom: 60px; */
+  /* margin: 1px solid lightgrey; */
+  list-style: none;
+  display: flex;
+}
+
+.side-bar-box{
+  width: 280px;
+  height: 800px;
+  padding: 5px;
+  border: 1px solid lightgrey;
+}
+
+
+.post-item-box img{
+  object-fit: contain;
+  object-position: 50% 50%;
+
+}
+
+.posts-and-sidebar{
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 935px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.post-top{
+  position:relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.post-top .post-author-img{
+  /* position: absolute; */
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid lightgrey;
+  margin-left: 25px;
+}
+
+.post-top .post-author-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+.post-author-name p {
+  padding-left: 20px;
+  font-family: 'Ubuntu', sans-serif;
+
+}
+.comment{
+  padding: 0 16px;
+  list-style: none;
+}
+
+.comment-icons{
+  width: 170px;
+  display: flex;
+  margin-top: 4px;
+}
+
+.comment-icons a img{
+  height: 24px;
+  width: 23px;
+  padding: 8px;
+}
+
+.comment-icons .comment-flag{
+  margin-left: 420px;
+}
+.comment-content li{
+  padding: 4px 0px 4px 0px;
+}

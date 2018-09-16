@@ -18,7 +18,7 @@
     display: flex;
     margin: 0 auto;
     width: 800px;
-
+    position: relative;
   }
 
   .greeting_img {
@@ -38,10 +38,11 @@
   .greeting_form h1 {
     font-family: 'Dancing Script', cursive;
     font-size: 50px;
+    margin-top: 44px;
+
   }
 
   .form_and_link{
-    border: 0px solid lightgrey;
     background-color: white;
     width: 400px;
     height: 500px;
@@ -51,7 +52,7 @@
   .greeting_form{
     border: 1px solid lightgrey;
     margin: 20px;
-    height: 580px;
+    height: 531px;
     text-align: center;
     flex-direction: column;
     display: flex;
@@ -118,9 +119,9 @@
     padding: 10px;
     margin-left: 40px;
     margin-right: 40px;
-    background-color: #809fff;
+    background-color: #59adfd;
     color: white;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
@@ -132,3 +133,92 @@
     height: 20px;
     color: red;
   }
+
+  .nav_bar{
+    padding: 26px 143px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid lightgrey;
+
+  }
+
+  .nav_bar > .logo-and-ig{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+  }
+
+  .logo-and-ig > li{
+    padding-left: 10px;
+    margin: 5px;
+    height: 33px;
+  }
+
+  .logo-and-ig > .ig {
+    font-size: 25px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    border-left: 1px solid black;
+  }
+
+  .logo > img{
+    width: 35px;
+    height: 35px;
+  }
+
+  /* .search-bar{
+    margin: 0;
+    padding: 0;
+    position: relative;
+  } */
+
+
+  .search-bar {
+    background-color: #fafafa;
+    border: solid 1px #dbdbdb;
+    padding: 4px 10px 4px 10px;
+    width: 200px;
+    height: 20px;
+    border-radius: 4px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-bar > img {
+    width: 12px;
+    height: 12px;
+    color:inherit;
+  }
+
+  .search-bar > input {
+    background-color: inherit;
+    border: 0;
+    width: 500px;
+    height: 25px;
+  }
+
+.support-icons a{
+  display: block;
+  cursor: pointer;
+}
+
+.support-icons a img {
+  height: 22px;
+  width: 22px;
+}
+
+
+.support-icons {
+  width: 170px;
+  display: flex;
+  justify-content: space-around;
+
+}

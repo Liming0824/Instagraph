@@ -1,0 +1,21 @@
+.search-bar {
+  input {
+    box-shadow: 0 0 0 white;
+    margin-bottom: 0;
+    margin-left: 5px;
+    &:focus {
+      box-shadow: 0 0 0 white;
+    }
+  }
+  img {
+    opacity: 0.5;
+  }
+}
+
+.open-page-gif{
+  width: 239px;
+  height: 237px;
+  position: absolute;
+  right: 509px;
+  top: 253px;
+}
