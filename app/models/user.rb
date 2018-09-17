@@ -68,7 +68,7 @@ class User < ApplicationRecord
 
   def add_default_photo
     unless user_photo.attached?
-      self.user_photo.attach(io: File.open("/Users/limingkang/Documents/Full_Stack_Project/Instagraph/app/assets/images/default_user_img.png"), filename: 'default_user_img.png')
+      self.user_photo.attach(io: File.open("app/assets/images/default_user_img.png"), filename: 'default_user_img.png')
     end
   end
 
