@@ -36,7 +36,7 @@ export const fetchPosts = () => {
       return dispatch(receivePosts(posts));
     },
     errors => {
-      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors });
+      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON });
     }
   );
   };
@@ -48,7 +48,7 @@ export const fetchPost = (id) => {
       return dispatch(receivePost(post));
     },
     errors => {
-      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors });
+      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON });
     }
   );
   };
@@ -60,7 +60,7 @@ export const createPost = (post) => {
       return dispatch(receivePost(post));
     },
     errors => {
-      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors });
+      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON });
     }
   );
   };
@@ -73,7 +73,7 @@ export const deletePost = (id) => {
       return dispatch(removePost(id));
     },
     errors => {
-      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors });
+      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON });
     }
   );
   };
