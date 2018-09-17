@@ -29,6 +29,11 @@ class User < ApplicationRecord
   primary_key: :id,
   class_name: 'Post'
 
+  has_many :likes,
+  foreign_key: :liker_id,
+  primary_key: :id,
+  class_name: 'Like'
+
 
 
 

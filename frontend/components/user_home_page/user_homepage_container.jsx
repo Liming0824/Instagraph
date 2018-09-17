@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import UserHomePage from './user_homepage';
 import { logout } from '../../actions/session_actions';
+import { createPost } from '../../actions/post_actions';
 // import {withRouter} from 'react-router-dom';
 
 
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+
 });
 
 

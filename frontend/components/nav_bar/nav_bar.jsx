@@ -2,24 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { Redirect } from 'react-router-dom';
-import { createPost } from '../../actions/post_actions';
-// import { HashRouter, Route, NavLink, Switch } from 'react-router-dom';
+import { createPost, fetchPost } from '../../actions/post_actions';
+// import { openSearchSelected, closeTabs } from '../../actions/ui_actions';
+import { searchUsers } from '../../actions/user_actions';
 
 
 class NavBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      searchValue: '',
       image_url: 'fakeurl',
-      photo: null
+      photo: null,
+      matchingResults: []
     };
   }
 
+  componentWillReceiveProps(){
+    this.setState({
+      matchingResults: this.props.searchResults
+    });
+  }
 
   handleSearch(e){
-// should update state and show liker list
-}
+    this.props.searchUsers(e.target.value);
+  }
+
+
+
+
 
   updateExploreProps(){
 
@@ -32,7 +42,7 @@ class NavBar extends React.Component {
   updateFile(e){
     this.setState({photo: e.target.files[0]}, ()=>{
       document.getElementsByClassName('post-submit-button')[0].click();
-    })
+    });
   }
 
   postSubmit(e){
@@ -40,7 +50,7 @@ class NavBar extends React.Component {
     let formData = new FormData();
     formData.append('post[image_url]', this.state.image_url);
     formData.append('post[photo]', this.state.photo);
-    this.props.createPost(formData).then(()=>console.log('success!'));
+    this.props.createPost(formData).then(post => this.props.fetchPost(post.id));
   }
 
 
@@ -58,6 +68,18 @@ class NavBar extends React.Component {
   }
 
   render(){
+    let result_items;
+    if(this.props.searchResults.length !== 0){
+      result_items = this.props.searchResults.map((user,idx) => {
+        return (
+          <li key={idx}>
+            <img src={user.photo_image_url}/>
+            <span>{user.username}</span>
+          </li>
+        )
+      })
+    }
+
       return (
         <section className='nav_bar'>
           <div className='logo-and-ig' onClick={this.goHomePage.bind(this)}>
@@ -68,7 +90,10 @@ class NavBar extends React.Component {
           </div>
           <div className="search-bar">
             <img src={window.searchImg} />
-            <input value={this.state.searchValue} onChange={this.handleSearch.bind(this)} placeholder='search'/>
+            <input type="text" onChange={this.handleSearch.bind(this)} placeholder='search'/>
+            <div className={`result_items `} >
+              {result_items}
+            </div>
           </div>
           <div className='support-icons'>
             <form onSubmit={this.postSubmit.bind(this)} hidden>
@@ -86,14 +111,23 @@ class NavBar extends React.Component {
 
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  currentUser: state.entities.users[state.session.currentUserId],
-  loggedIn: !!state.session.currentUserId
-})
+const mapStateToProps = (state, ownProps) => {
+  debugger
+  return {
+    currentUser: state.entities.users[state.session.currentUserId],
+    loggedIn: !!state.session.currentUserId,
+    searchResults: state.entities.userSearch
+  }
+}
+
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
-  createPost: (post) => dispatch(createPost(post))
+  createPost: (post) => dispatch(createPost(post)),
+  // open_search: () => dispatch(openSearchSelected()),
+  // closeTabs: () => dispatch(closeTabs()),
+  searchUsers: (query) => dispatch(searchUsers(query)),
+  fetchPost: (id) => dispatch(fetchPost(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

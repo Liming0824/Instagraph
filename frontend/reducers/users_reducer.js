@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_POSTS } from '../actions/post_actions';
-import { RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_USER, SEARCH_USERS } from '../actions/user_actions';
 import merge from 'lodash/merge';
 
 export default (state = {}, action) => {

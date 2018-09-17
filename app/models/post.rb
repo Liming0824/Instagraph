@@ -14,6 +14,11 @@ class Post < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many :likes,
+  foreign_key: :post_id,
+  primary_key: :id,
+  class_name: 'Like'
+
   belongs_to :user,
   foreign_key: :user_id,
   primary_key: :id,

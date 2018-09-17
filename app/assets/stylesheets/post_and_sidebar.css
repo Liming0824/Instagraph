@@ -79,6 +79,10 @@
   padding: 0 16px;
   list-style: none;
 }
+.comment .likes-count{
+  padding: 4px 0px 4px 10px;
+  font-weight: bold;
+}
 
 .comment-icons{
   width: 170px;
@@ -90,11 +94,12 @@
   height: 24px;
   width: 23px;
   padding: 8px;
+  cursor: pointer;
 }
 
 .comment-icons .comment-flag{
   margin-left: 420px;
 }
 .comment-content li{
-  padding: 4px 0px 4px 0px;
+  padding: 4px 0px 4px 10px;
 }
