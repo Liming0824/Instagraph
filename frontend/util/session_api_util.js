@@ -16,8 +16,8 @@ export const signup = user => {
     data: {
       user: user
     },
-    contentType: false,
-    processData: false
+    // contentType: false,
+    // processData: false
   });
 };
 

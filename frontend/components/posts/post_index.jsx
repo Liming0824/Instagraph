@@ -8,7 +8,6 @@ import PostItem from './post_item';
 
 class PostIndex extends React.Component {
   constructor(props){
-    debugger
     super(props);
     this.props.removeErrors();
   }
@@ -18,7 +17,6 @@ class PostIndex extends React.Component {
   }
 
   render(){
-    debugger
     const items = this.props.posts.map(post => <PostItem key={post.id} post={post} deletePost={this.props.deletePost}/>);
     return (
       <div className='posts-body'>
@@ -31,7 +29,6 @@ class PostIndex extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     posts: Object.values(state.entities.posts),
     users: Object.values(state.entities.users)

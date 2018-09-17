@@ -74,7 +74,6 @@ class PostItem extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return{
     user: state.entities.users[ownProps.post.posterId],
     liked: ownProps.post.likes.includes(state.session.currentUserId)

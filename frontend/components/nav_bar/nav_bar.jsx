@@ -112,7 +112,6 @@ class NavBar extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     currentUser: state.entities.users[state.session.currentUserId],
     loggedIn: !!state.session.currentUserId,
