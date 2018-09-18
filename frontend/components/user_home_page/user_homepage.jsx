@@ -6,7 +6,17 @@ import { Redirect } from 'react-router-dom';
 
 class UserHomePage extends React.Component {
 
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount(){
+    this.props.fetchPosts();
+  }
+
+
 render(){
+
   const button = (
       <div>
         <h1>{this.props.currentUser.username}</h1>
@@ -14,12 +24,54 @@ render(){
       </div>
     )
 
-  return(
-      <div>
-        <h3>this is the home page of user: {this.props.pageOwner.username}</h3>
-        {button}
-      </div>
-    )
+
+    let ownerPosts;
+    let items;
+    if(this.props.pageOwner && (this.props.match.params.username === this.props.pageOwner.username)){
+      ownerPosts = Object.values(this.props.pageOwner.posts)
+      items = ownerPosts.map((post, idx) => {
+        return(
+          <li key={idx}>
+            <img src={post.photo_image_url}/>
+          </li>
+        )
+      });
+
+      return(
+          <div className="user-homepage">
+            <div className="user-homepage-title">
+              <img src={this.props.pageOwner.photo_image_url}/>
+              <div className='settings'>
+                <div className="follow-status">
+                  <span>{this.props.match.params.username}</span>
+                  <button>Edit Profile</button>
+                  <a className="setting-button"><img src={window.settingImg}/></a>
+                </div>
+                <div className="status">
+                  <li className="post-number">{ownerPosts.length} posts</li>
+                  <li className="follower-number">number of followers</li>
+                  <li className="following-number">number of followings</li>
+                </div>
+                <div className="user-bio">
+                  <li>{this.props.pageOwner.username}</li>
+                  <li>{this.props.pageOwner.bio}</li>
+                </div>
+              </div>
+            </div>
+            <div className="post-feed">
+              {items}
+            </div>
+            // <h3>this is the home page of user: {this.props.pageOwner.username}</h3>
+            // {button}
+          </div>
+        )
+    }else{
+      return (
+        <div>
+          <h1>loading or double check the path</h1>
+        </div>
+      )
+    }
   }
 
 }

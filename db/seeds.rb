@@ -31,7 +31,7 @@ post3.save!
 post3.photo.attach(io: File.open("app/assets/images/shanghai.jpg"), filename: "shanghai.jpg")
 
 post4 = Post.new({user_id: User.last.id, image_url: "fakeurl"})
-# file4 = File.open("https://s3.amazonaws.com/file-upload-dev-aa-kang/instagraph/timessquare3.jpe")
+# file4 = File.open("https://s3.amazonaws.com/file-upload-dev-aa-kang/instagraph/timessquare3.jpg")
 # post4.photo.attach(io: file4, filename: 'timessquare3.jpg')
 post4.save!
-post4.photo.attach(io: File.open("app/assets/images/timessquare3.jpe"), filename: "timessquare3.jpe")
+post4.photo.attach(io: File.open("app/assets/images/timessquare3.jpg"), filename: "timessquare3.jpg")

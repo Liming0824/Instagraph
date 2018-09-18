@@ -29,8 +29,13 @@ class PostIndex extends React.Component {
 
 
 const mapStateToProps = (state) => {
+  //This function not really work
+  let origin_posts = Object.values(state.entities.posts);
+  origin_posts = origin_posts.sort((x,y) => {
+    Date.parse(x.created_at) < Date.parse(y.created_at)
+  })
   return {
-    posts: Object.values(state.entities.posts),
+    posts: origin_posts,
     users: Object.values(state.entities.users)
   }
 }

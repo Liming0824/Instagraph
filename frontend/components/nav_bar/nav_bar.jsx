@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { Redirect } from 'react-router-dom';
 import { createPost, fetchPost } from '../../actions/post_actions';
-// import { openSearchSelected, closeTabs } from '../../actions/ui_actions';
 import { searchUsers } from '../../actions/user_actions';
 
 
@@ -13,23 +12,31 @@ class NavBar extends React.Component {
     this.state = {
       image_url: 'fakeurl',
       photo: null,
+      inputValue: '',
       matchingResults: []
     };
   }
 
   componentWillReceiveProps(){
+    debugger
     this.setState({
       matchingResults: this.props.searchResults
     });
   }
 
-  handleSearch(e){
-    this.props.searchUsers(e.target.value);
+  handleSearch(query){
+    debugger
+    this.props.searchUsers(query);
   }
 
-
-
-
+  updateInputValue(e){
+    debugger
+    this.setState({
+      inputValue: e.target.value
+    });
+    debugger
+    this.handleSearch.bind(this)(e.target.value);
+  }
 
   updateExploreProps(){
 
@@ -50,9 +57,13 @@ class NavBar extends React.Component {
     let formData = new FormData();
     formData.append('post[image_url]', this.state.image_url);
     formData.append('post[photo]', this.state.photo);
-    this.props.createPost(formData).then(post => this.props.fetchPost(post.id));
+    this.props.createPost(formData);
   }
 
+  handleTitleClick(user){
+    this.setState({inputValue: ''});
+    this.props.history.push(`/homepage/${user.username}/${user.id}`);
+  }
 
   //for now after click just go to home page, later we ar egoing to change that to ' go to page with the post of following people'
   goHomePage(){
@@ -72,13 +83,15 @@ class NavBar extends React.Component {
     if(this.props.searchResults.length !== 0){
       result_items = this.props.searchResults.map((user,idx) => {
         return (
-          <li key={idx}>
+          <li key={idx} onClick={this.handleTitleClick.bind(this,user)}>
             <img src={user.photo_image_url}/>
             <span>{user.username}</span>
           </li>
         )
       })
     }
+
+    let show_status = this.state.inputValue === '' ? "hidden" : ''
 
       return (
         <section className='nav_bar'>
@@ -90,8 +103,8 @@ class NavBar extends React.Component {
           </div>
           <div className="search-bar">
             <img src={window.searchImg} />
-            <input type="text" onChange={this.handleSearch.bind(this)} placeholder='search'/>
-            <div className={`result_items `} >
+            <input type="text" value={this.state.inputValue} onChange={this.updateInputValue.bind(this)} placeholder='search'/>
+            <div className={`search_items ${show_status}`} >
               {result_items}
             </div>
           </div>
@@ -123,8 +136,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
   createPost: (post) => dispatch(createPost(post)),
-  // open_search: () => dispatch(openSearchSelected()),
-  // closeTabs: () => dispatch(closeTabs()),
   searchUsers: (query) => dispatch(searchUsers(query)),
   fetchPost: (id) => dispatch(fetchPost(id))
 })

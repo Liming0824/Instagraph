@@ -1,4 +1,4 @@
 json.array!(@users) do |user|
-  json.(user, *User.column_names)
+  json.partial! 'api/users/user', user: user
 end
 # json.followed(current_user.follows?(user))

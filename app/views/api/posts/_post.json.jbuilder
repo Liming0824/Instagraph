@@ -1,4 +1,4 @@
-json.extract! post, :id, :image_url
+json.extract! post, :id, :image_url, :created_at
 json.photo_image_url url_for(post.photo)
 json.posterId post.user_id
 json.likes post.likes.map{|like| like.liker_id}
