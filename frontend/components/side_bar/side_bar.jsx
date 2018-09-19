@@ -37,7 +37,6 @@ class SideBar extends React.Component{
       </div>
     )
   }
-
 }
 
 
