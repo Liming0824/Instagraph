@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 class SideBar extends React.Component{
 
   handleClick(){
     this.props.history.push(`/homepage/${this.props.currentUser.username}/${this.props.currentUser.id}`);
   }
+
 
   render(){
     return (
@@ -45,4 +47,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(SideBar);
+export default withRouter(connect(mapStateToProps)(SideBar));
