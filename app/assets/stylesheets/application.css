@@ -43,7 +43,7 @@
   }
 
   .form_and_link{
-    background-color: white;
+
     width: 400px;
     height: 500px;
     margin-top: 40px;
@@ -56,11 +56,13 @@
     text-align: center;
     flex-direction: column;
     display: flex;
+    background-color: white;
   }
 
   .another_option_link{
     margin: 20px;
     padding: 30px;
+    background-color: white;
     /* height: 9px; */
     border: 1px solid lightgrey;
   }
