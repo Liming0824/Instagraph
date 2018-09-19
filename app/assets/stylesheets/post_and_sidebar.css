@@ -38,9 +38,8 @@
 
 
 .post-item-box img{
-  object-fit: contain;
+  object-fit: cover;
   object-position: 50% 50%;
-
 }
 
 .posts-and-sidebar{
@@ -70,9 +69,10 @@
 .post-top .post-author-img img{
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: 50% 50%;
   cursor: pointer;
+  border-radius: 50% 50%;
 }
 
 .post-author-name p {

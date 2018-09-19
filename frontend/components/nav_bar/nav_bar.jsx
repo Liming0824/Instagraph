@@ -71,7 +71,6 @@ class NavBar extends React.Component {
     }
 
     let show_status = this.state.inputValue === '' ? "hidden" : ''
-
       return (
         <section className='nav_bar'>
           <div className='logo-and-ig' onClick={this.goHomePage.bind(this)}>
@@ -83,9 +82,12 @@ class NavBar extends React.Component {
           <div className="search-bar">
             <img src={window.searchImg} />
             <input type="text" value={this.state.inputValue} onChange={this.updateInputValue.bind(this)} placeholder='search'/>
-            <div className={`search_items ${show_status}`} >
-              {result_items}
-            </div>
+            {result_items !== undefined ?
+              <div className={`search_items ${show_status}`} >
+                {result_items}
+              </div>  :
+              null
+            }
             <DropdownContainer />
           </div>
           <div className='support-icons'>

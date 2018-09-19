@@ -40,7 +40,9 @@ render(){
       return(
           <div className="user-homepage">
             <div className="user-homepage-title">
-              <img src={this.props.pageOwner.photo_image_url}/>
+              <div className="photo">
+                <img src={this.props.pageOwner.photo_image_url}/>
+              </div>
               <div className='settings'>
                 <div className="follow-status">
                   <span>{this.props.match.params.username}</span>

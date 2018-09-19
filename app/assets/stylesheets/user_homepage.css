@@ -20,13 +20,19 @@
   /* border: 1px solid lightgrey; */
   margin-left: 80px;
 }
-
-.user-homepage-title > img{
+.user-homepage-title .photo{
   width: 150px;
   height: 150px;
   border: 1px solid lightgrey;
   border-radius: 50% 50%;
   margin-left: 50px
+}
+.user-homepage-title .photo img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50%;
+  object-fit: cover;
+  object-position: 50% 50%;
   /* border: 0px 80px 0px 50px; */
 }
 
@@ -109,9 +115,7 @@ body{
   background-color: #FFFAFA;
 }
 
-
-
 .feed-post img:hover{
-
-  /* background-color: rgba(0, 0, 0, 0.7); */
+  opacity:0.5;
+  cursor: pointer;
 }
