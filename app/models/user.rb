@@ -42,6 +42,18 @@ class User < ApplicationRecord
   class_name: 'Comment'
 
 
+  has_many :followings,
+  foreign_key: :follower_id,
+  primary_key: :id
+  class_name: 'Follow'
+
+
+  has_many :followers,
+  foreign_key: :followee_id,
+  primary_key: :id
+  class_name: 'Follow'
+
+
 
 
 

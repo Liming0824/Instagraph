@@ -29,6 +29,10 @@ class PostItem extends React.Component {
     }
   }
 
+  handleCommentImg(){
+    document.getElementsByClassName("comment-input-bar")[0].focus();
+  }
+
   updateComment(e){
     this.setState({
       commentValue: e.target.value
@@ -113,8 +117,8 @@ class PostItem extends React.Component {
         </ul>
         <ul className="comment">
           <div className="comment-icons">
-            <a className={"comment-like"} onClick={this.handleLike.bind(this)}><img src={this.props.liked ? window.redlikeImg : window.likeImg}/></a>
-            <a className="comment-write" onClick={this.handleComment.bind(this)}><img src={window.commentImg}/></a>
+            <a className="comment-like" onClick={this.handleLike.bind(this)}><img src={this.props.liked ? window.redlikeImg : window.likeImg}/></a>
+            <a className="comment-write" onClick={this.handleCommentImg.bind(this)}><img src={window.commentImg}/></a>
             <a className="comment-share" onClick={this.handleShare.bind(this)}><img src={window.shareImg}/></a>
             <a className="comment-flag" onClick={this.handleTag.bind(this)}><img src={window.tagImg}/></a>
           </div>
@@ -123,7 +127,7 @@ class PostItem extends React.Component {
             {items}
             <li>
               <form onSubmit={this.handleSubmitComment.bind(this)}>
-                <input required type='text' value={this.state.commentValue} onChange={this.updateComment.bind(this)} placeholder='want to say something?'/>
+                <input className="comment-input-bar" required type='text' value={this.state.commentValue} onChange={this.updateComment.bind(this)} placeholder='want to say something?'/>
                 <input type='submit' hidden />
               </form>
               <p className='error-messages'>{this.props.errors}</p>

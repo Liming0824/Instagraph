@@ -16,14 +16,12 @@ class UserHomePage extends React.Component {
 
 
 render(){
-
   const button = (
       <div>
         <h1>{this.props.currentUser.username}</h1>
         <button onClick={this.props.logout}>Log Out</button>
       </div>
     )
-
 
     let ownerPosts;
     let items;
