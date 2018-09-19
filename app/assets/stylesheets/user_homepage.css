@@ -5,17 +5,20 @@
 }
 
 .user-homepage-title{
-  width: 800px;
-  height: 220px;
+  width: 850px;
+  height: 250px;
   display: flex;
   flex-direction: row;
-  vertical-align: middle;
-  padding-top: 30px;
-  border: 1px solid lightgrey;
+  align-items: center;
+  /* border: 1px solid lightgrey; */
 }
 .user-homepage-title .settings{
   display: flex;
   flex-direction: column;
+  width: 435px;
+  height: 138px;
+  /* border: 1px solid lightgrey; */
+  margin-left: 80px;
 }
 
 .user-homepage-title > img{
@@ -23,21 +26,92 @@
   height: 150px;
   border: 1px solid lightgrey;
   border-radius: 50% 50%;
+  margin-left: 50px
   /* border: 0px 80px 0px 50px; */
 }
 
 .setting-button img{
   width: 25px;
   height: 25px;
+  margin-left: 29px;
 }
 
 .follow-status{
   display: flex;
   flex-direction: row;
   align-items: center;
+
 }
 .status{
   list-style: none;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.status li{
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif
+}
+
+.follow-status span{
+  font-size: 35px;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 16px;
+}
+
+.follow-status button{
+  margin-left: 29px;
+  padding: 5px 7px 5px 7px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.user-bio li{
+  list-style: none;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.post-feed{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 40px;
+  /* border: 1px solid lightgrey; */
+  width: 936px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.post-feed li{
+  width: 290px;
+  height: 290px;
+  list-style: none;
+  /* border: 1px solid lightgrey; */
+  display: flex;
+  margin: 10px;
+}
+
+.post-feed li img{
+  /* position: absolute; */
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+body{
+  background-color: #FFFAFA;
+}
+
+
+
+.feed-post img:hover{
+
+  /* background-color: rgba(0, 0, 0, 0.7); */
 }

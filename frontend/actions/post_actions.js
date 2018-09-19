@@ -60,7 +60,7 @@ export const createPost = (post) => {
       return dispatch(receivePost(post));
     },
     errors => {
-      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON});
+      return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON });
     }
   );
   };

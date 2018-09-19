@@ -26,7 +26,7 @@ class Greeting extends React.Component {
             <div className='greeting_form'>
               <h1>Instagraph</h1>
               <LoginFormContainer />
-              <p className='error-messages'>{this.props.errors.responseJSON}</p>
+              <p className='error-messages'>{this.props.errors}</p>
               <button onClick={this.loginDemo.bind(this)} className="demo-button">try demo</button>
             </div>
             <div className={'another_option_link'}>
@@ -49,7 +49,7 @@ class Greeting extends React.Component {
                 Sign up to see photos and videos from your friends.
               </p>
               <SignupFormContainer />
-              <p className='error-messages'>{this.props.errors.responseJSON}</p>
+              <p className='error-messages'>{this.props.errors}</p>
               <button onClick={this.loginDemo.bind(this)} className="demo-button">try demo</button>
               <p className='by_signup'>By signing up, you agree to our Terms, Data Policy and Cookies Policy</p>
             </div>

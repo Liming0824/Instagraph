@@ -4,37 +4,33 @@ import { logout } from '../../actions/session_actions';
 import { Redirect } from 'react-router-dom';
 import { createPost, fetchPost } from '../../actions/post_actions';
 import { searchUsers } from '../../actions/user_actions';
+import { openPostDropdown } from '../../actions/modal_actions';
+import DropdownContainer from '../post_dropdown/post_dropdown.jsx';
 
 
 class NavBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      image_url: 'fakeurl',
-      photo: null,
       inputValue: '',
       matchingResults: []
     };
   }
 
   componentWillReceiveProps(){
-    debugger
     this.setState({
       matchingResults: this.props.searchResults
     });
   }
 
   handleSearch(query){
-    debugger
     this.props.searchUsers(query);
   }
 
   updateInputValue(e){
-    debugger
     this.setState({
       inputValue: e.target.value
     });
-    debugger
     this.handleSearch.bind(this)(e.target.value);
   }
 
@@ -44,20 +40,6 @@ class NavBar extends React.Component {
 
   updateFansProps(){
 
-  }
-
-  updateFile(e){
-    this.setState({photo: e.target.files[0]}, ()=>{
-      document.getElementsByClassName('post-submit-button')[0].click();
-    });
-  }
-
-  postSubmit(e){
-    e.preventDefault();
-    let formData = new FormData();
-    formData.append('post[image_url]', this.state.image_url);
-    formData.append('post[photo]', this.state.photo);
-    this.props.createPost(formData);
   }
 
   handleTitleClick(user){
@@ -74,9 +56,6 @@ class NavBar extends React.Component {
     this.props.history.push(`/homepage/${this.props.currentUser.username}/${this.props.currentUser.id}`);
   }
 
-  AddNewPost(){
-    document.getElementsByClassName('newpost-input')[0].click();
-  }
 
   render(){
     let result_items;
@@ -107,16 +86,13 @@ class NavBar extends React.Component {
             <div className={`search_items ${show_status}`} >
               {result_items}
             </div>
+            <DropdownContainer />
           </div>
           <div className='support-icons'>
-            <form onSubmit={this.postSubmit.bind(this)} hidden>
-              <input className='newpost-input' type='file' accept='.gif, .jpg, .jpeg, .png' hidden onChange={this.updateFile.bind(this)} ></input>
-              <button className='post-submit-button' hidden></button>
-            </form>
             <a className='explore' onClick={this.updateExploreProps.bind(this)}><img src={window.navigationImg} /></a>
             <a className='fans' onClick={this.updateFansProps.bind(this)}><img src={window.likeImg} /></a>
             <a className='go_userpage' onClick={this.GoToUserPage.bind(this)}><img src={window.userImg} /></a>
-            <a className='add-post' onClick={this.AddNewPost.bind(this)}><img src={window.addImg} /></a>
+            <a className='add-post' onClick={this.props.openDropdown}><img src={window.addImg} /></a>
           </div>
         </section>
       );
@@ -137,7 +113,8 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
   createPost: (post) => dispatch(createPost(post)),
   searchUsers: (query) => dispatch(searchUsers(query)),
-  fetchPost: (id) => dispatch(fetchPost(id))
+  fetchPost: (id) => dispatch(fetchPost(id)),
+  openDropdown: () => dispatch(openPostDropdown())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

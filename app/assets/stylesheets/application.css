@@ -135,14 +135,14 @@
   }
 
   .nav_bar{
-    padding: 26px 143px;
+    padding: 26px 110px;
     height: 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom: 1px solid lightgrey;
-
+    background-color: white;
   }
 
   .nav_bar > .logo-and-ig{

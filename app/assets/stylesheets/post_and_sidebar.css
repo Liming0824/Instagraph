@@ -5,6 +5,7 @@
 .post-top-comment{
   margin-bottom: 60px;
   border: 0.5px solid lightgrey;
+  background-color: white;
 }
 
 .post-top-comment .post-top{
@@ -16,7 +17,7 @@
 
 .post-item-box{
   width: 605px;
-  height: 605px;;
+  height: 605px;
   /* padding: 50px 0px 50px 0px; */
   border: 0.5px solid lightgrey;
   /* margin-bottom: 60px; */
@@ -27,10 +28,12 @@
 
 .side-bar-box{
   width: 280px;
-  height: 800px;
+  height: 590px;
   padding: 5px;
   border: 1px solid lightgrey;
   margin-left: 30px;
+  background-color: inherit;
+  position: relative;
 }
 
 
@@ -69,6 +72,7 @@
   height: 100%;
   object-fit: contain;
   object-position: 50% 50%;
+  cursor: pointer;
 }
 
 .post-author-name p {
@@ -140,4 +144,68 @@
   border-radius: 50% 50%;
   margin-right: 5px;
 
+}
+
+.side-bar-box footer{
+  position: fixed;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  border-top: 0.5px solid #DCDCDC;
+}
+
+.side-bar-box footer div{
+  font-size: 12px;
+  padding: 10px 0px 3px 0px;
+  opacity: 0.3;
+}
+.side-bar-box .current-user-top img{
+  width: 42px;
+  height: 42px;
+  border: 0.5px solid lightgrey;
+  border-radius: 50% 50%;
+  margin: 0px 15px 7px 10px;
+  cursor: pointer;
+}
+.side-bar-box .current-user-top{
+  display: flex;
+  align-items: center;
+}
+
+.side-bar-box .current-user-top span{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 17px;
+}
+
+.stories-and-watch-all {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 7px 10px 7px;
+  border-top: 1px solid #DCDCDC;
+}
+
+.stories-and-watch-all span {
+  opacity: 0.5;
+}
+
+.friends-stories{
+  height: 432px;
+  /* border: 1px solid lightgrey; */
+}
+
+.comment-content ul{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.comment-content ul button{
+  padding: 3px;
+  font-size: 14px;
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+}
+
+.comment-dropdown{
+  margin-left:10px;
 }

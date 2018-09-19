@@ -9,6 +9,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_img_url    :string
+#  bio             :string
 #
 
 class User < ApplicationRecord
@@ -33,6 +34,12 @@ class User < ApplicationRecord
   foreign_key: :liker_id,
   primary_key: :id,
   class_name: 'Like'
+
+
+  has_many :comments,
+  foreign_key: :author_id,
+  primary_key: :id,
+  class_name: 'Comment'
 
 
 

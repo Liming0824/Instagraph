@@ -1,57 +1,26 @@
-// import {
-//   UPDATE_POST_SELECTED,
-//   OPEN_NOTICE_SELECTED,
-//   OPEN_SEARCH_SELECTED,
-//   OPEN_SETTING_SELECTED,
-//   CHANGE_PROFILE_SELECTED,
-//   CLOSE_TABS
-// } from '../actions/ui_actions';
-//
-// import {
-//   LOGOUT_CURRENT_USER
-// } from '../actions/session_actions';
-//
-// const defaultState = {
-//   update_post_selected: false,
-//   open_notice_selected: false,
-//   open_search_selected: false,
-//   open_setting_selected: false,
-//   change_profile_selected: false
-// };
-//
-// const uiReducer = (state = defaultState, action) => {
-//   Object.freeze(state);
-//   let newState = Object.assign({}, state);
-//   switch(action.type){
-//     case UPDATE_POST_SELECTED:
-//       Object.assign(newState, {update_post_selected: true});
-//       return newState;
-//     case OPEN_NOTICE_SELECTED:
-//       Object.assign(newState, {open_notice_selected: true});
-//       return newState;
-//     case OPEN_SEARCH_SELECTED:
-//       Object.assign(newState, {open_search_selected: true});
-//       return newState;
-//     case OPEN_SETTING_SELECTED:
-//       Object.assign(newState, {open_setting_selected: true});
-//       return newState;
-//     case CHANGE_PROFILE_SELECTED:
-//       Object.assign(newState, {change_profile_selected: true});
-//       return newState;
-//     case CLOSE_TABS:
-//       return defaultState;
-//     case LOGOUT_CURRENT_USER:
-//       return defaultState;
-//     default:
-//       return state;
-//   }
-// };
-//
-// export default uiReducer;
+import { OPEN_POST_DROPDOWN, CLOSE_POST_DROPDOWN, OPEN_COMMENT_DROPDOWN, CLOSE_COMMENT_DROPDOWN } from '../actions/modal_actions';
 
-import { combineReducers } from 'redux';
-import modal from './modal_reducer';
+const defaultState = {
+  post_dropdown_open: false,
+  comment_dropdown: false
+};
 
-export default combineReducers({
-  modal
-});
+const uiReducer = (state = defaultState, action) => {
+  Object.freeze(state);
+  switch(action.type){
+    case OPEN_POST_DROPDOWN:
+      let newState = Object.assign({}, state, {post_dropdown_open: true});
+      return newState;
+    case CLOSE_POST_DROPDOWN:
+      return defaultState;
+    case OPEN_COMMENT_DROPDOWN:
+      let newState2 = Object.assign({}, state, {comment_dropdown: true});
+      return newState2;
+    case CLOSE_COMMENT_DROPDOWN:
+      return defaultState;
+    default:
+      return state;
+  }
+};
+
+export default uiReducer;

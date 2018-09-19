@@ -1,15 +1,26 @@
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const OPEN_POST_DROPDOWN = 'OPEN_POST_DROPDOWN';
+export const CLOSE_POST_DROPDOWN = 'CLOSE_POST_DROPDOWN';
+export const OPEN_COMMENT_DROPDOWN = "OPEN_COMMENT_DROPDOWN";
+export const CLOSE_COMMENT_DROPDOWN = "CLOSE_COMMENT_DROPDOWN";
 
-export const openModal = (modal) => {
+export const openPostDropdown = () => {
   return {
-    type: OPEN_MODAL,
-    modal: modal
+    type: OPEN_POST_DROPDOWN
   };
 };
 
-export const closeModal = () => {
+export const closePostDropdown = () => {
   return {
-    type: CLOSE_MODAL
+    type: CLOSE_POST_DROPDOWN
+  };
+};
+export const openCommentDropdown = () => {
+  return {
+    type: OPEN_COMMENT_DROPDOWN
+  };
+};
+export const closeCommentDropdown = () => {
+  return {
+    type: CLOSE_COMMENT_DROPDOWN
   };
 };

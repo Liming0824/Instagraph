@@ -19,6 +19,11 @@ class Post < ApplicationRecord
   primary_key: :id,
   class_name: 'Like'
 
+  has_many :comments,
+  foreign_key: :post_id,
+  primary_key: :id,
+  class_name: 'Comment'
+
   belongs_to :user,
   foreign_key: :user_id,
   primary_key: :id,

@@ -31,7 +31,7 @@ render(){
       ownerPosts = Object.values(this.props.pageOwner.posts)
       items = ownerPosts.map((post, idx) => {
         return(
-          <li key={idx}>
+          <li className="feed-post" key={idx}>
             <img src={post.photo_image_url}/>
           </li>
         )
@@ -53,7 +53,6 @@ render(){
                   <li className="following-number">number of followings</li>
                 </div>
                 <div className="user-bio">
-                  <li>{this.props.pageOwner.username}</li>
                   <li>{this.props.pageOwner.bio}</li>
                 </div>
               </div>
@@ -61,8 +60,7 @@ render(){
             <div className="post-feed">
               {items}
             </div>
-            // <h3>this is the home page of user: {this.props.pageOwner.username}</h3>
-            // {button}
+             {button}
           </div>
         )
     }else{

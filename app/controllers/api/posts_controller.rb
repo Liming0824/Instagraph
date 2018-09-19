@@ -49,10 +49,28 @@ class Api::PostsController < ApplicationController
     end
   end
 
+
+  def createComment
+    # @post = Post.find(params[:comment][:post_id])
+    # @comment = @post.comments.new(comment_params)
+    # @comment.author_id = current_user.id
+    @comment = Comment.new(comment_params)
+    @comment.author_id = current_user.id
+    if @comment.save
+      render '/api/comments/show'
+    else
+      render json: @comment.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:image_url, :photo)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:post_id,:body)
   end
 
 

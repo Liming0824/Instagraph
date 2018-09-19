@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import { createLike, deleteLike } from '../../actions/like_actions';
 import { fetchPost } from '../../actions/post_actions';
+import { createComment, deleteComment } from '../../actions/comment_actions';
+import { openCommentDropdown, closeCommentDropdown } from '../../actions/modal_actions';
 
 class PostItem extends React.Component {
   constructor(props){
     super(props);
+    this.state={
+      commentValue: '',
+      commentId: null
+    };
+    this.props.remove_error();
   }
 
   handleAuthorClick(){
@@ -22,8 +29,36 @@ class PostItem extends React.Component {
     }
   }
 
-  handleComment(){
+  updateComment(e){
+    this.setState({
+      commentValue: e.target.value
+    });
+  }
 
+  handleComment(id){
+    this.setState({
+      commentId: id
+    });
+    this.props.openCommentDropdown();
+  }
+
+  handleCancleComment(){
+    this.props.closeCommentDropdown();
+  }
+
+  handleDeleteComment(id){
+    this.props.deleteComment(id);
+    this.setState({
+      commentId: null
+    });
+  }
+
+  handleSubmitComment(e){
+    e.preventDefault();
+    this.props.createComment({post_id: this.props.post.id, body: this.state.commentValue});
+    this.setState({
+      commentValue: ''
+    });
   }
 
 
@@ -38,10 +73,31 @@ class PostItem extends React.Component {
 
 
   render(){
-    // need to be implement later on, create comment table, and fetch all comments in post controller and post index jbuilder
-    // also need change routes, comment model, comment controller, ajax, action, reducer fro create new comments and then dispatch
-    // const items = this.props.post.comments.map(comment => <CommentContainer />)
-    //
+    const users = this.props.users;
+    const deleteable = this.props.deleteable;
+    const currentUser = this.props.currentUser;
+    const status = this.props.status;
+    const comment_id = this.state.commentId;
+    const items = this.props.comments.map(comment => {
+      const author = users[comment.author_id];
+      const deleteable_status = status && (comment.id === comment_id) ? "" : 'hidden';
+      return (
+        <ul>
+          <li key={comment.id} onClick={()=>{
+              if(author.id === currentUser.id || deleteable){
+                this.handleComment.bind(this, comment.id)();
+              }
+            }}>
+            <strong>{author.username}</strong>
+            <span>{comment.body}</span>
+          </li>
+          <div className={`comment-dropdown ${deleteable_status}`}>
+            <button onClick={this.handleCancleComment.bind(this)}>Cancle</button>
+            <button onClick={this.handleDeleteComment.bind(this, comment.id)}>Delete</button>
+          </div>
+        </ul>
+      )
+    })
     return (
       <div className="post-top-comment">
         <ul className="post-top">
@@ -64,8 +120,14 @@ class PostItem extends React.Component {
           </div>
           <div className="likes-count">{this.props.post.likes.length} likes</div>
           <div className="comment-content">
-            <li>here should be a comment</li>
-            <li>another comment</li>
+            {items}
+            <li>
+              <form onSubmit={this.handleSubmitComment.bind(this)}>
+                <input required type='text' value={this.state.commentValue} onChange={this.updateComment.bind(this)} placeholder='want to say something?'/>
+                <input type='submit' hidden />
+              </form>
+              <p className='error-messages'>{this.props.errors}</p>
+            </li>
           </div>
         </ul>
       </div>
@@ -75,15 +137,26 @@ class PostItem extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return{
+    status: state.ui.comment_dropdown,
+    currentUser: state.entities.users[state.session.currentUserId],
+    errors: state.errors.commentForm,
+    users: state.entities.users,
     user: state.entities.users[ownProps.post.posterId],
-    liked: ownProps.post.likes.includes(state.session.currentUserId)
+    liked: ownProps.post.likes.includes(state.session.currentUserId),
+    comments: Object.values(ownProps.post.comments),
+    deleteable: ownProps.post.posterId === state.session.currentUserId
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    openCommentDropdown: () => dispatch(openCommentDropdown()),
+    closeCommentDropdown: () => dispatch(closeCommentDropdown()),
     createLike: (post_id) => dispatch(createLike(post_id)),
-    deleteLike: (post_id) => dispatch(deleteLike(post_id))
+    deleteLike: (post_id) => dispatch(deleteLike(post_id)),
+    createComment: (comment) => dispatch(createComment(comment)),
+    deleteComment: (id) => dispatch(deleteComment(id)),
+    remove_error: ()=> dispatch({type: `REMOVE_ERROR`})
   }
 }
 
