@@ -82,11 +82,11 @@ class PostItem extends React.Component {
     const currentUser = this.props.currentUser;
     const status = this.props.status;
     const comment_id = this.state.commentId;
-    const items = this.props.comments.map(comment => {
+    const items = this.props.comments.map((comment, idx) => {
       const author = users[comment.author_id];
       const deleteable_status = status && (comment.id === comment_id) ? "" : 'hidden';
       return (
-        <ul>
+        <ul key={idx}>
           <li key={comment.id} onClick={()=>{
               if(author.id === currentUser.id || deleteable){
                 this.handleComment.bind(this, comment.id)();

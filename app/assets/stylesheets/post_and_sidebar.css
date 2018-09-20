@@ -190,7 +190,12 @@
 
 .friends-stories{
   height: 432px;
+  overflow: scroll;
   /* border: 1px solid lightgrey; */
+}
+
+.friends-stories li{
+  cursor: pointer;
 }
 
 .comment-content ul{

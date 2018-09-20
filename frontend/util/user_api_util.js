@@ -25,3 +25,15 @@ export const searchUsers = (query) => {
     }
   });
 };
+
+// this is a test api ajax function
+export const searchUsersByIds = (id_arr) => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/users/search_by_ids',
+    data: {
+      arr: id_arr
+    }
+  });
+};
+// test over

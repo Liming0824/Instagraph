@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     resources :users do
       get 'search', on: :collection
-      get '/follows' => 'users#follows'
+      #search_by_ids test routes
+      get 'search_by_ids', on: :collection
+      # test end
+      delete '/follows' => 'users#destroyFollow'
+      post '/follows' => 'users#createFollow'
     end
     resource :session, only: [:new, :create, :destroy]
     resources :posts, only: [:create, :index, :show, :destroy] do

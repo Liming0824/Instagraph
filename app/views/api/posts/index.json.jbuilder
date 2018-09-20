@@ -14,6 +14,15 @@ json.users do
       json.posts user.posts do |post|
           json.partial! 'api/posts/post', post: post
       end
+      json.followers user.followers do |follower|
+        json.extract! follower, :id, :username, :bio
+        json.photo_image_url url_for(follower.user_photo)
+      end
+
+      json.followings user.followings do |following|
+        json.extract! following, :id, :username, :bio
+        json.photo_image_url url_for(following.user_photo)
+      end
     end
   end
 end

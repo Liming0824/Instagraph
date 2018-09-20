@@ -42,16 +42,25 @@ class User < ApplicationRecord
   class_name: 'Comment'
 
 
-  has_many :followings,
+  has_many :followings_records,
   foreign_key: :follower_id,
-  primary_key: :id
+  primary_key: :id,
   class_name: 'Follow'
 
+
+  has_many :follower_records,
+  foreign_key: :followee_id,
+  primary_key: :id,
+  class_name: 'Follow'
 
   has_many :followers,
-  foreign_key: :followee_id,
-  primary_key: :id
-  class_name: 'Follow'
+  through: :follower_records,
+  source: :follower
+
+
+  has_many :followings,
+  through: :followings_records,
+  source: :followee
 
 
 

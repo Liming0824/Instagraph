@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
-
+import SettingDropdownContainer from './setting_dropdown';
 
 
 class UserHomePage extends React.Component {
@@ -10,30 +9,63 @@ class UserHomePage extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
-    this.props.fetchPosts();
+
+  componentDidUpdate(preProps){
+    if(preProps.match.params.userId !== this.props.match.params.userId){
+      this.props.fetchUser(this.props.match.params.userId);
+    }
   }
 
 
-render(){
-  const button = (
-      <div>
-        <h1>{this.props.currentUser.username}</h1>
-        <button onClick={this.props.logout}>Log Out</button>
-      </div>
-    )
+  handleUnfollow(){
+    this.props.destroyFollow(this.props.pageOwner.id);
+  }
 
+
+  handleFollow(){
+    this.props.createFollow(this.props.pageOwner.id);
+  }
+
+
+  handleEdit(){
+
+  }
+
+
+  render(){
     let ownerPosts;
     let items;
     if(this.props.pageOwner && (this.props.match.params.username === this.props.pageOwner.username)){
-      ownerPosts = Object.values(this.props.pageOwner.posts)
+      ownerPosts = this.props.pageOwner.posts;
       items = ownerPosts.map((post, idx) => {
         return(
-          <li className="feed-post" key={idx}>
+          <li className="feed-post-container" key={idx}>
             <img src={post.photo_image_url}/>
+            <span>&hearts; &nbsp; {post.likes.length} &nbsp;&nbsp;✐ {post.comments.length}</span>
           </li>
         )
       });
+      let setting_buttons;
+        if(this.props.currentUser.id === this.props.pageOwner.id){
+          setting_buttons = (
+            <div className="follow-status">
+              <span>{this.props.match.params.username}</span>
+              <button onClick={this.handleEdit.bind(this)}>Edit Profile</button>
+              <a className="setting-button" onClick={this.props.openSettingDropdown}><img src={window.settingImg}/></a>
+            </div>
+          )
+        }else{
+          setting_buttons = (
+            <div className="follow_button_open">
+              <span>{this.props.match.params.username}</span>
+              {
+                this.props.followed ?
+                <button className='button' onClick={this.handleUnfollow.bind(this)}>Following</button> :
+                <button className='button blue-button' onClick={this.handleFollow.bind(this)}>Follow</button>
+              }
+            </div>
+          )
+        }
 
       return(
           <div className="user-homepage">
@@ -42,27 +74,24 @@ render(){
                 <img src={this.props.pageOwner.photo_image_url}/>
               </div>
               <div className='settings'>
-                <div className="follow-status">
-                  <span>{this.props.match.params.username}</span>
-                  <button>Edit Profile</button>
-                  <a className="setting-button"><img src={window.settingImg}/></a>
-                </div>
+                {setting_buttons}
                 <div className="status">
                   <li className="post-number">{ownerPosts.length} posts</li>
-                  <li className="follower-number">number of followers</li>
-                  <li className="following-number">number of followings</li>
+                  <li className="follower-number">{this.props.pageOwner.followers.length} followers</li>
+                  <li className="following-number">{this.props.pageOwner.followings.length} following</li>
                 </div>
                 <div className="user-bio">
                   <li>{this.props.pageOwner.bio}</li>
                 </div>
               </div>
             </div>
+            <SettingDropdownContainer />
             <div className="post-feed">
               {items}
             </div>
-             {button}
           </div>
         )
+
     }else{
       return (
         <div>

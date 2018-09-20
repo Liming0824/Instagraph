@@ -10,6 +10,7 @@ User.destroy_all
 Post.destroy_all
 Like.destroy_all
 Comment.destroy_all
+Follow.destroy_all
 
 
 user1 = User.new({username: 'liming.k', password: '123456'})
@@ -187,3 +188,20 @@ comment4 = Comment.create({post_id: post4.id, author_id: user7.id,body: "nice!"}
 comment5 = Comment.create({post_id: post2.id, author_id: user3.id,body: "great pic!!"})
 comment6 = Comment.create({post_id: post5.id, author_id: user2.id,body: "looks nice!"})
 comment7 = Comment.create({post_id: post1.id, author_id: user2.id,body: "another successful test!"})
+
+
+follow1 = Follow.create({follower_id: user1.id, followee_id: user2.id})
+follow2 = Follow.create({follower_id: user2.id, followee_id: user1.id})
+follow3 = Follow.create({follower_id: user3.id, followee_id: user4.id})
+follow4 = Follow.create({follower_id: user4.id, followee_id: user3.id})
+follow5 = Follow.create({follower_id: user7.id, followee_id: user5.id})
+follow6 = Follow.create({follower_id: user5.id, followee_id: user6.id})
+follow7 = Follow.create({follower_id: user8.id, followee_id: user1.id})
+follow8 = Follow.create({follower_id: user8.id, followee_id: user2.id})
+follow9 = Follow.create({follower_id: user8.id, followee_id: user3.id})
+follow10 = Follow.create({follower_id: user5.id, followee_id: user2.id})
+follow11 = Follow.create({follower_id: user2.id, followee_id: user6.id})
+follow12 = Follow.create({follower_id: user2.id, followee_id: user3.id})
+follow13 = Follow.create({follower_id: user1.id, followee_id: user9.id})
+follow14 = Follow.create({follower_id: user1.id, followee_id: user10.id})
+follow15 = Follow.create({follower_id: user2.id, followee_id: user7.id})

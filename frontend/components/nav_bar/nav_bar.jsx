@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { createPost, fetchPost } from '../../actions/post_actions';
 import { searchUsers } from '../../actions/user_actions';
 import { openPostDropdown } from '../../actions/modal_actions';
-import DropdownContainer from '../post_dropdown/post_dropdown.jsx';
+import PostDropdownContainer from '../post_dropdown/post_dropdown.jsx';
 
 
 class NavBar extends React.Component {
@@ -88,7 +88,7 @@ class NavBar extends React.Component {
               </div>  :
               null
             }
-            <DropdownContainer />
+            <PostDropdownContainer />
           </div>
           <div className='support-icons'>
             <a className='explore' onClick={this.updateExploreProps.bind(this)}><img src={window.navigationImg} /></a>

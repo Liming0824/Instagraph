@@ -1,17 +1,94 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import { searchUsersByIds } from '../../actions/user_actions';
 
 class SideBar extends React.Component{
+
+  componentDidMount(){
+    const arr = this.props.followings.map(user => user.id)
+    this.props.searchUsersByIds(arr);
+  }
+
+  getDateDiff(data) {
+      let timePublish = new Date(data);
+      let timeNow = new Date();
+      let minute = 1000 * 60;
+      let hour = minute * 60;
+      let day = hour * 24;
+      let month = day * 30;
+      let diffValue = timeNow - timePublish;
+      let diffMonth = diffValue / month;
+      let diffWeek = diffValue / (7 * day);
+      let diffDay = diffValue / day;
+      let diffHour = diffValue / hour;
+      let diffMinute = diffValue / minute;
+      let result;
+      if (diffValue < 0) {
+          alert("WRONG TIME");
+      }
+      else if (diffMonth > 3) {
+          result = timePublish.getFullYear() + "-";
+          result += timePublish.getMonth() + "-";
+          result += timePublish.getDate();
+          alert(result);
+      }
+      else if (diffMonth > 1) {
+          result = parseInt(diffMonth) + "  MONTHS AGO";
+      }
+      else if (diffWeek > 1) {
+          result = parseInt(diffWeek) + "  WEEKS AGO";
+      }
+      else if (diffDay > 1) {
+          result = parseInt(diffDay) + "  DAYS AGO";
+      }
+      else if (diffHour > 1) {
+          result = parseInt(diffHour) + "  HOURS AGO";
+      }
+      else if (diffMinute > 1) {
+          result = parseInt(diffMinute) + "  MINUTES AGO";
+      }
+      else {
+          result = "JUST NOW";
+      }
+      return result;
+  }
 
   handleClick(){
     this.props.history.push(`/homepage/${this.props.currentUser.username}/${this.props.currentUser.id}`);
   }
 
 
+  handleFriendClick(friend){
+    this.props.history.push(`/homepage/${friend.username}/${friend.id}`);
+  }
+
   render(){
+    // const followings = this.props.followings;
+    const friends = this.props.friends;
+
+    let items = friends.map((friend, idx) => {
+      let time;
+      if(friend.posts.length > 0){
+        time = this.getDateDiff.bind(this, friend.posts[friend.posts.length-1].created_at)();
+      }
+
+      return(
+        <li className="friend-item" onClick={this.handleFriendClick.bind(this,friend)} key={idx}>
+          <div className='for-rainbow'>
+            <div className="item-box">
+              <img src={friend.photo_image_url}/>
+            </div>
+          </div>
+          <div className="info-div">
+            <span>{friend.username}</span>
+            <strong>{time ? time : ''}</strong>
+          </div>
+        </li>
+      )
+    })
+
     return (
-      //side bar box should have margin left 30-50px
       <div className='side-bar-box'>
         <div className='current-user-top'>
           <img src={this.props.currentUser.photo_image_url} onClick={this.handleClick.bind(this)}/>
@@ -22,8 +99,7 @@ class SideBar extends React.Component{
           <span>watch all</span>
         </div>
         <div className='friends-stories'>
-          //for now just display friends name, pic, after implement, this list should depends on who has new story
-          // going to be list of friends, overflow: scroll
+          {items}
         </div>
         <footer>
           <div>
@@ -42,8 +118,17 @@ class SideBar extends React.Component{
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.entities.users[state.session.currentUserId]
+    users: Object.values(state.entities.users),
+    currentUser: state.entities.users[state.session.currentUserId],
+    followings: state.entities.users[state.session.currentUserId].followings,
+    friends: state.entities.userSearch
   }
 }
 
-export default withRouter(connect(mapStateToProps)(SideBar));
+const mapDispatchToProps = (dispatch) => {
+  return{
+    searchUsersByIds: (arr) => dispatch(searchUsersByIds(arr))
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideBar));

@@ -32,6 +32,43 @@ class Api::UsersController < ApplicationController
     render :search
   end
 
+
+
+  def search_by_ids
+    if params[:arr].present?
+      arr = params[:arr].map{|el| el.to_i}
+      @users = User.find(arr)
+    else
+      @users = User.none
+    end
+    render :search
+  end
+
+  def destroyFollow
+    @user = User.find(params[:user_id])
+    @follow = @user.follower_records.where(follower_id: current_user.id)
+    @follow = @follow.destroy_all.first
+    if @follow
+      render '/api/follows/show'
+    else
+      render json: @follow.errors.full_messages, status: 422
+    end
+  end
+
+
+  def createFollow
+    # @user = User.find(params[:user_id])
+    # @follow = @user.followers.new(follower_id: current_user.id)
+    @follow = Follow.new(follower_id: current_user.id, followee_id: params[:user_id])
+    if @follow.save
+      render '/api/follows/show'
+    else
+      render json: @follow.errors.full_messages, status: 422
+    end
+  end
+
+
+
   private
 
   def user_params

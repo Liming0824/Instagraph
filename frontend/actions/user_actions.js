@@ -11,6 +11,7 @@ export const fetchUser = (id) => {
     });
   };
 };
+
 export const updateUser = (user) => {
   return (dispatch) => {
     return UserAPIUtil.updateUser(user).then(user => {
@@ -22,6 +23,14 @@ export const updateUser = (user) => {
 export const searchUsers = (query) => {
   return (dispatch) => {
     return UserAPIUtil.searchUsers(query).then(response => {
+      return dispatch({type: SEARCH_USERS, response: response});
+    });
+  };
+};
+
+export const searchUsersByIds = (arr) => {
+  return (dispatch) => {
+    return UserAPIUtil.searchUsersByIds(arr).then(response => {
       return dispatch({type: SEARCH_USERS, response: response});
     });
   };
