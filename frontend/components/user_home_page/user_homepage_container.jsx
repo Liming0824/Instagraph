@@ -5,7 +5,8 @@ import { fetchPost, fetchPosts, deletePost } from '../../actions/post_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
 import {withRouter} from 'react-router-dom';
-import { openSettingDropdown } from '../../actions/modal_actions';
+import { openSettingDropdown, openPictureDropdown, openEditDropdown } from '../../actions/modal_actions';
+
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.currentUserId],
     loggedIn: !!state.session.currentUserId,
     pageOwner: state.entities.users[ownProps.match.params.userId],
-    followed: state.entities.users[state.session.currentUserId].followings.map(user => user.id).includes(parseInt(ownProps.match.params.userId))
+    followed: state.entities.users[state.session.currentUserId].followings.map(user => user.id).includes(parseInt(ownProps.match.params.userId)),
   };
 };
 
@@ -22,7 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPosts: ()=> dispatch(fetchPosts()),
   createFollow: (followee_id) => dispatch(createFollow(followee_id)),
   destroyFollow: (followee_id) => dispatch(destroyFollow(followee_id)),
-  openSettingDropdown: () => dispatch(openSettingDropdown())
+  openSettingDropdown: () => dispatch(openSettingDropdown()),
+  openPictureDropdown: (post) => dispatch(openPictureDropdown(post)),
+  openEditDropdown: () => dispatch(openEditDropdown()),
 });
 
 

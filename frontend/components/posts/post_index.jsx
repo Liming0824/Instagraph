@@ -17,7 +17,7 @@ class PostIndex extends React.Component {
   }
 
   render(){
-    
+
     const items = this.props.posts.map(post => <PostItem key={post.id} post={post} deletePost={this.props.deletePost}/>);
     return (
       <div className='posts-body'>
@@ -29,13 +29,8 @@ class PostIndex extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  //This function not really work
-  let origin_posts = Object.values(state.entities.posts);
-  origin_posts = origin_posts.sort((x,y) => {
-    Date.parse(x.created_at) - Date.parse(y.created_at)
-  })
   return {
-    posts: origin_posts,
+    posts: Object.values(state.entities.posts).reverse(),
     users: Object.values(state.entities.users)
   }
 }

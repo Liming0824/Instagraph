@@ -4,6 +4,34 @@ export const OPEN_COMMENT_DROPDOWN = "OPEN_COMMENT_DROPDOWN";
 export const CLOSE_COMMENT_DROPDOWN = "CLOSE_COMMENT_DROPDOWN";
 export const OPEN_SETTING_DROPDOWN = "OPEN_SETTING_DROPDOWN";
 export const CLOSE_SETTING_DROPDOWN = "CLOSE_SETTING_DROPDOWN";
+export const OPEN_PICTURE_DROPDOWN = "OPEN_PICTURE_DROPDOWN";
+export const CLOSE_PICTURE_DROPDOWN = "CLOSE_PICTURE_DROPDOWN";
+export const OPEN_EDIT_DROPDOWN = "OPEN_EDIT_DROPDOWN";
+export const CLOSE_EDIT_DROPDOWN = "CLOSE_EDIT_DROPDOWN";
+
+export const openEditDropdown = () => {
+  return {
+    type: OPEN_EDIT_DROPDOWN,
+  };
+};
+export const closeEditDropdown = () => {
+  return {
+    type: CLOSE_EDIT_DROPDOWN,
+  };
+};
+
+export const openPictureDropdown = (post) => {
+  return {
+    type: OPEN_PICTURE_DROPDOWN,
+    post: post
+  };
+};
+
+export const closePictureDropdown = () => {
+  return {
+    type: CLOSE_PICTURE_DROPDOWN
+  };
+};
 
 export const openPostDropdown = () => {
   return {

@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :session_token, :username, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :bio, length: {maximum: 30, allow_nil: true}
+  validates :username, length: {maximum: 25}
   attr_reader :password
 
   after_initialize :ensure_session_token

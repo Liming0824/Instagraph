@@ -23,5 +23,9 @@ class Like < ApplicationRecord
   primary_key: :id,
   class_name: 'Post'
 
+  has_one :post_author,
+  through: :post,
+  source: :user
+
 
 end

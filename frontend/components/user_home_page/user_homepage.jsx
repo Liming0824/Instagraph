@@ -1,18 +1,30 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SettingDropdownContainer from './setting_dropdown';
-
+import PictureDropdownContainer from '../post_dropdown/picture_dropdown';
+import EditDropdownContainer from '../post_dropdown/edit_dropdown';
 
 class UserHomePage extends React.Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      likes_arr: []
+    };
+  }
+
+  componentDidMount(){
+    this.props.fetchUser(this.props.match.params.userId);
+    // this.props.fetchPosts();
   }
 
 
   componentDidUpdate(preProps){
     if(preProps.match.params.userId !== this.props.match.params.userId){
       this.props.fetchUser(this.props.match.params.userId);
+      this.setState({
+        likes_arr: this.props.pageOwner.posts.map(post => post.likes.length)
+      });
     }
   }
 
@@ -28,7 +40,11 @@ class UserHomePage extends React.Component {
 
 
   handleEdit(){
+    this.props.openEditDropdown();
+  }
 
+  handleZoomPost(post){
+    this.props.openPictureDropdown(post);
   }
 
 
@@ -39,12 +55,13 @@ class UserHomePage extends React.Component {
       ownerPosts = this.props.pageOwner.posts;
       items = ownerPosts.map((post, idx) => {
         return(
-          <li className="feed-post-container" key={idx}>
+          <li className="feed-post-container" key={idx} onClick={this.handleZoomPost.bind(this, post)}>
             <img src={post.photo_image_url}/>
             <span>&hearts; &nbsp; {post.likes.length} &nbsp;&nbsp;✐ {post.comments.length}</span>
           </li>
         )
       });
+      items = items.reverse();
       let setting_buttons;
         if(this.props.currentUser.id === this.props.pageOwner.id){
           setting_buttons = (
@@ -86,6 +103,8 @@ class UserHomePage extends React.Component {
               </div>
             </div>
             <SettingDropdownContainer />
+            <PictureDropdownContainer author={this.props.pageOwner}/>
+            <EditDropdownContainer />
             <div className="post-feed">
               {items}
             </div>

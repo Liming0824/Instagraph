@@ -119,7 +119,6 @@ body{
 .feed-post-container img {
   cursor: pointer;
   width:100%;
-
 }
 
 .feed-post-container span{
@@ -135,6 +134,7 @@ body{
     text-align: center;
     font-size: 30px;
     line-height: 280px;
+      cursor: pointer;
 }
 
 .feed-post-container span:hover {

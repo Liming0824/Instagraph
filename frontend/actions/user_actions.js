@@ -7,10 +7,11 @@ export const CLEAR_SEARCH = "CLEAR_SEARCH";
 export const fetchUser = (id) => {
   return (dispatch) => {
     return UserAPIUtil.fetchUser(id).then(user => {
-      return dispatch({type: RECEIVE_USER, user: user});
+        return dispatch({type: RECEIVE_USER, user: user});
     });
   };
 };
+
 
 export const updateUser = (user) => {
   return (dispatch) => {

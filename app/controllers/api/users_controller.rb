@@ -20,6 +20,8 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    post_ids = @user.posts.map{|post| post.id}
+    @posts = Post.find(post_ids)
     render :show
   end
 
