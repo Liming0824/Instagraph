@@ -51,16 +51,29 @@ export default (state = {}, action) => {
         return newState6;
       case REMOVE_LIKE:
         let newState5 = Object.assign({},state);
-        let likes = newState5[action.like.post_author.id].posts[action.like.post_id].likes;
-        const idx = likes.indexOf(action.like.liker_id);
-        likes = likes.slice(0,idx).concat(likes.slice(idx+1));
-        newState5[action.like.post_author.id].posts[action.like.post_id].likes = likes;
+        let user_posts2 = newState5[action.like.post_author.id].posts;
+        for(let i = 0; i < user_posts2.length; i++){
+          if(user_posts2[i].id === action.like.post_id){
+            let user_likes = user_posts2[i].likes;
+            const idx = user_likes.indexOf(action.like.liker_id);
+            user_likes = user_likes.slice(0, idx).concat(user_likes.slice(idx+1));
+            user_posts2[i].likes = user_likes;
+          }
+        }
+        newState5[action.like.post_author.id].posts = user_posts2;
         return newState5;
     case RECEIVE_COMMENT:
       let newState4 = merge({}, state);
-      newState4.posts[action.comment.post_id].comments.push({id: action.comment.id, body: action.comment.body, author_name: action.comment.author_name});
+      let user_posts = newState4[action.comment.post_author_id].posts;
+      for(let i = 0; i < user_posts.length; i++) {
+        if(user_posts[i].id === action.comment.post_id){
+          user_posts[i].comments.push({id: action.comment.id, body: action.comment.body, author_name: action.comment.author_name});
+        }
+      }
+      newState4[action.comment.post_author_id].posts = user_posts;
       return newState4;
     default:
       return state;
+
   }
 };

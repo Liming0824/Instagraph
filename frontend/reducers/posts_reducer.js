@@ -32,19 +32,17 @@ export default (state = {}, action) => {
     case RECEIVE_USER:
       let newState7 = Object.assign({},state, action.user.postsFromUser);
       return newState7;
-    // case RECEIVE_LIKE:
-    // debugger
-    //   let newState3 = Object.assign({},state);
-    //   newState3[action.like.post_id].likes.push(action.like.liker_id);
-    //   return newState3;
-    // case REMOVE_LIKE:
-    // debugger
-    //   let newState4 = Object.assign({},state);
-    //   let likes = newState4[action.like.post_id].likes;
-    //   const idx = likes.indexOf(action.like.liker_id);
-    //   likes = likes.slice(0,idx).concat(likes.slice(idx+1));
-    //   newState4[action.like.post_id].likes = likes;
-    //   return newState4;
+    case RECEIVE_LIKE:
+      let newState3 = Object.assign({},state);
+      newState3[action.like.post_id].likes.push(action.like.liker_id);
+      return newState3;
+    case REMOVE_LIKE:
+      let newState4 = Object.assign({},state);
+      let likes = newState4[action.like.post_id].likes;
+      const idx = likes.indexOf(action.like.liker_id);
+      likes = likes.slice(0,idx).concat(likes.slice(idx+1));
+      newState4[action.like.post_id].likes = likes;
+      return newState4;
     default:
       return state;
   }

@@ -3,12 +3,10 @@ json.photo_image_url url_for(user.user_photo)
 
 
 json.posts user.posts do |post|
-  # json.partial! 'api/posts/post', post: post
   json.extract! post, :id, :image_url, :created_at
   json.photo_image_url url_for(post.photo)
   json.posterId post.user_id
   json.likes post.likes.map{|like| like.liker_id}
-  # json.comments post.comments.map{|comment| comment.id}
   json.comments post.comments do |comment|
     json.extract! comment, :id, :body
     json.author_name comment.author.username

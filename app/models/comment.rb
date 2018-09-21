@@ -24,5 +24,9 @@ class Comment < ApplicationRecord
     primary_key: :id,
     class_name: 'User'
 
+    has_one :post_author,
+    through: :post,
+    source: :user
+
 
 end
