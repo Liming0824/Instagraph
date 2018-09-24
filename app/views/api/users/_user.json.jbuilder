@@ -28,6 +28,11 @@ end
 json.followings user.followings.each do |following|
   json.extract! following, :id, :username, :bio
   json.photo_image_url url_for(following.user_photo)
+
+  json.posts following.posts.each do |post|
+    json.extract! post, :id, :image_url, :created_at
+  end
+  
 end
 
 

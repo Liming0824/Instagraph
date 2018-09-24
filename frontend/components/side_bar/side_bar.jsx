@@ -64,9 +64,8 @@ class SideBar extends React.Component{
   }
 
   render(){
-    // const followings = this.props.followings;
-    const friends = this.props.friends;
-
+    const friends = this.props.followings;
+    debugger
     let items = friends.map((friend, idx) => {
       let time;
       if(friend.posts.length > 0){
@@ -121,7 +120,6 @@ const mapStateToProps = (state, ownProps) => {
     users: Object.values(state.entities.users),
     currentUser: state.entities.users[state.session.currentUserId],
     followings: state.entities.users[state.session.currentUserId].followings,
-    friends: state.entities.userSearch
   }
 }
 
