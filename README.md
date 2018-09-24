@@ -8,7 +8,7 @@ Welcome to Instagraph, a single-page clone of Instagram. Instagram is a photo an
 ## User Authentication
 Users can securely sign up, log in, and log out simply by setting an username and password for their account.
 
-![Image description](instagraph_readme_images/Screen Shot 2018-09-23 at 11.18.42 PM.png)
+![Image description](instagraph_readme_images/auth.png)
 
 ## Structure
 ---
@@ -25,15 +25,15 @@ Instragram's main components are as follows:
 # User Search & Friends newest post
 User could be able to search other users by entering part of username in the searchbar.
 User also could know the time of the latest post of each friend through the side bar in the homepage.
-![Image description](instagraph_readme_images/Screen Shot 2018-09-23 at 11.19.27 PM.png)
+![Image description](instagraph_readme_images/search_and_friendspost.png)
 
 # New Follow Notice
 User could get new follower notice by click the heart icon in the nav bar.
-![Image description](instagraph_readme_images/Screen Shot 2018-09-23 at 11.21.30 PM.png)
+![Image description](instagraph_readme_images/follow_notice.png)
 
 # New Post
 User could be able to select image, preview, and post a new post. User also could write comment for post, and delete comments which are made by user his/her self or comments under user's own post.
-![Image description](instagraph_readme_images/Screen Shot 2018-09-23 at 11.19.55 PM.png)
+![Image description](instagraph_readme_images/new_post.png.png)
 
 ## Technologies
 ---
