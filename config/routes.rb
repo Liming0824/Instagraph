@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       # test end
       delete '/follows' => 'users#destroyFollow'
       post '/follows' => 'users#createFollow'
+      patch '/follows' => 'users#updateFollow'
     end
     resource :session, only: [:new, :create, :destroy]
     resources :posts, only: [:create, :index, :show, :destroy] do

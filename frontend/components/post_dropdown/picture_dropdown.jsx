@@ -30,11 +30,9 @@ class PictureDropdown extends React.Component {
 
   //
   // handleLike(){
-  //   debugger
   //   if(this.props.post.likes.includes(this.props.currentUserId)){
   //     this.props.deleteLike(this.props.post.id);
   //   }else{
-  //     debugger
   //     this.props.createLike(this.props.post.id);
   //   }
   // }
@@ -45,7 +43,6 @@ class PictureDropdown extends React.Component {
   //
   // handleSubmitComment(e){
   //   e.preventDefault();
-  //   debugger
   //   this.props.createComment({post_id: this.props.post.id, body: this.state.commentValue});
   //   this.setState({
   //     commentValue: ''

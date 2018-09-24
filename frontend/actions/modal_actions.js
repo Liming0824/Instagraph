@@ -8,6 +8,13 @@ export const OPEN_PICTURE_DROPDOWN = "OPEN_PICTURE_DROPDOWN";
 export const CLOSE_PICTURE_DROPDOWN = "CLOSE_PICTURE_DROPDOWN";
 export const OPEN_EDIT_DROPDOWN = "OPEN_EDIT_DROPDOWN";
 export const CLOSE_EDIT_DROPDOWN = "CLOSE_EDIT_DROPDOWN";
+export const NOTICE_DROPDOWN = 'NOTICE_DROPDOWN';
+
+export const toggleNoticeDropdown = () => {
+  return {
+    type: NOTICE_DROPDOWN
+  };
+};
 
 export const openEditDropdown = () => {
   return {

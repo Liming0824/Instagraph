@@ -1,4 +1,11 @@
 class Api::UsersController < ApplicationController
+
+
+  def index
+    @users = User.all
+    render :index
+  end
+
   def create
     @user = User.create(user_params)
     if @user.save
@@ -70,6 +77,17 @@ class Api::UsersController < ApplicationController
   end
 
 
+  def updateFollow
+    @user = User.find(params[:user_id])
+    @follow = @user.followings_records.where(followee_id: current_user.id)[0]
+    if @follow.update({noticed: true})
+      render '/api/follows/show'
+    else
+      render json: @follow.errors.full_messages, status: 422
+    end
+  end
+
+
 
   private
 
@@ -80,5 +98,7 @@ class Api::UsersController < ApplicationController
   def update_user
     params.require(:user).permit(:bio, :user_photo)
   end
+
+
 
 end

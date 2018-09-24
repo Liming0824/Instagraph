@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import UserHomePage from './user_homepage';
 import { createPost } from '../../actions/post_actions';
 import { fetchPost, fetchPosts, deletePost } from '../../actions/post_actions';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, fetchUsers } from '../../actions/user_actions';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
 import {withRouter} from 'react-router-dom';
 import { openSettingDropdown, openPictureDropdown, openEditDropdown } from '../../actions/modal_actions';
@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: (id) => dispatch(fetchUser(id)),
+  fetchUsers: () => dispatch(fetchUsers()),
   fetchPosts: ()=> dispatch(fetchPosts()),
   createFollow: (followee_id) => dispatch(createFollow(followee_id)),
   destroyFollow: (followee_id) => dispatch(destroyFollow(followee_id)),

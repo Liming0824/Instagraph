@@ -13,3 +13,11 @@ export const destroyFollow = (followee_id) => {
     url: `api/users/${followee_id}/follows`
   });
 };
+
+
+export const updateFollow = (follower_id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/users/${follower_id}/follows`
+  });
+};

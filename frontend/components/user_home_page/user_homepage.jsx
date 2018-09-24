@@ -14,8 +14,8 @@ class UserHomePage extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchUser(this.props.match.params.userId);
-    // this.props.fetchPosts();
+    this.props.fetchUsers();
+    // this.props.fetchUser(this.props.match.params.userId);
   }
 
 
