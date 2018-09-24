@@ -33,7 +33,7 @@ User could get new follower notice by click the heart icon in the nav bar.
 
 # New Post
 User could be able to select image, preview, and post a new post. User also could write comment for post, and delete comments which are made by user his/her self or comments under user's own post.
-![Image description](instagraph_readme_images/new_post.png.png)
+![Image description](instagraph_readme_images/new_post.png)
 
 ## Technologies
 ---
