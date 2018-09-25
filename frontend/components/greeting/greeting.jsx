@@ -49,7 +49,7 @@ class Greeting extends React.Component {
                 Sign up to see photos and videos from your friends.
               </p>
               <SignupFormContainer />
-              <p className='error-messages'>{this.props.errors}</p>
+              <p className='error-messages'>{this.props.errors[0]}</p>
               <button onClick={this.loginDemo.bind(this)} className="demo-button">try demo</button>
               <p className='by_signup'>By signing up, you agree to our Terms, Data Policy and Cookies Policy</p>
             </div>

@@ -99,8 +99,8 @@ class NavBar extends React.Component {
             <a className='fans' onClick={this.updateNoticeProps.bind(this)}><img src={window.likeImg} /></a>
             <a className='go_userpage' onClick={this.GoToUserPage.bind(this)}><img src={window.userImg} /></a>
             <a className='add-post' onClick={this.props.openDropdown}><img src={window.addImg} /></a>
+            <NoticeDropdown />
           </div>
-          <NoticeDropdown />
         </section>
       );
   }

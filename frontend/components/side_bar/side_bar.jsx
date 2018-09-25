@@ -65,7 +65,6 @@ class SideBar extends React.Component{
 
   render(){
     const friends = this.props.followings;
-    debugger
     let items = friends.map((friend, idx) => {
       let time;
       if(friend.posts.length > 0){

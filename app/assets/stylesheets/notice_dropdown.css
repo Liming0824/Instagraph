@@ -1,25 +1,32 @@
 .notice-dropdown {
   background-color: white;
-  width: 460px;
+  width: 420px;
   max-height: 400px;
   position: absolute;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  top: 66px;
-  left: 49%;
+  top: 40px;
+  left: -140%;
   z-index: 10;
   display:flex;
   flex-direction: column;
+  box-shadow: 0 0 5px rgba(0,0,0,.0975);
 }
-.nav_bar{
+/* .nav_bar{
+  position: relative;
+} */
+.support-icons{
   position: relative;
 }
+
+
+
 .notice-dropdown li{
   display: flex;
   flex-direction: row;
   overflow: scroll;
   align-items: center;
-  margin: 3px;
+  margin: 6px;
 }
 .notice-dropdown li span{
   width: 255px;
@@ -35,14 +42,16 @@
 
 .notice-dropdown li button{
   margin-left: 15px;
-  width: 68px;
-  border-radius: 2px;
+  width: 88px;
+  border-radius: 3px;
   border: 1px solid lightgrey;
   font-size: 15px;
   text-align: center;
+  padding: 4px 0 4px 0;
 }
 
 .no-new-notice{
+  margin: 6px;
   display: flex;
   justify-content: center;
 }

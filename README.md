@@ -28,7 +28,7 @@ User also could know the time of the latest post of each friend through the side
 ![Image description](instagraph_readme_images/search_and_friendspost.png)
 
 # New Follow Notice
-User could get new follower notice by click the heart icon in the nav bar.
+User could get new follower notice by clicking the heart icon in the nav bar.
 ![Image description](instagraph_readme_images/follow_notice.png)
 
 # New Post
