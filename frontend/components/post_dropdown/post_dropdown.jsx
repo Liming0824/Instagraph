@@ -36,14 +36,15 @@ class Dropdown extends React.Component {
     this.props.createPost(formData);
     this.props.closePostDropdown();
     this.setState({
-      photoUrl: ''
+      photoUrl: '',
+      photo: null
     });
   }
 
 
   AddNewPost(){
     document.getElementsByClassName('newpost-input')[0].click();
-  } 
+  }
 
   render(){
     const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;

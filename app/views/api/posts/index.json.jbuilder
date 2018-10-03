@@ -9,7 +9,7 @@ end
 json.users do
   @users.each do |user|
     json.set! user.id do
-      json.extract! user, :id, :username, :user_img_url;
+      json.extract! user, :id, :username, :user_img_url, :bio
       json.photo_image_url url_for(user.user_photo)
       json.follower_records user.follower_records.each do |follow|
           json.extract! follow, :noticed, :follower_id
@@ -31,7 +31,7 @@ json.users do
         json.posts following.posts.each do |post|
           json.extract! post, :id, :image_url, :created_at
         end
-        
+
       end
     end
   end

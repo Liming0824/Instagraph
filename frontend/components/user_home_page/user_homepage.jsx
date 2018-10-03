@@ -52,7 +52,7 @@ class UserHomePage extends React.Component {
     let ownerPosts;
     let items;
     if(this.props.pageOwner && (this.props.match.params.username === this.props.pageOwner.username)){
-      ownerPosts = this.props.pageOwner.posts;
+      ownerPosts = this.props.pageOwner.posts.sort((a,b)=>(new Date(a.created_at) - new Date(b.created_at)));
       items = ownerPosts.map((post, idx) => {
         return(
           <li className="feed-post-container" key={idx} onClick={this.handleZoomPost.bind(this, post)}>
@@ -98,7 +98,7 @@ class UserHomePage extends React.Component {
                   <li className="following-number">{this.props.pageOwner.followings.length} following</li>
                 </div>
                 <div className="user-bio">
-                  <li>{this.props.pageOwner.bio}</li>
+                  <li>bio: &nbsp; &nbsp;{this.props.pageOwner.bio}</li>
                 </div>
               </div>
             </div>
