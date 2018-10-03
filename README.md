@@ -19,6 +19,7 @@ Instragram's main components are as follows:
 2. NavBar
   * NoticeDropdown
 3. UserHomepage
+  * EditDropdown
 
 ## Feature Highlights
 ---
@@ -38,8 +39,3 @@ User could be able to select image, preview, and post a new post. User also coul
 ## Technologies
 ---
 Instagraph uses PostgreSQL database and Rails 5 on the back end, together with React/Redux on the front end.
-
-## Future Features
-1. User profile edit
-2. Direct messaging
-3. Hashtag
