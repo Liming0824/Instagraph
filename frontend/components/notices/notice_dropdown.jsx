@@ -42,7 +42,7 @@ class NoticeDropdown extends React.Component {
             return (
               <li key={idx}>
                 <img src={follower.photo_image_url} onClick={this.handleClick.bind(this, follower)}/>
-                <span>{follower.username} start following you</span>
+                <span>{follower.username} started following you</span>
                 <button className='delete-button'onClick={this.handleDelete.bind(this, follower.id)} >Delete</button>
                 {
                   currentUser.followings.map(user => user.id).includes(follower.id) ?
