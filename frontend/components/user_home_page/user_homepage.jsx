@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import SettingDropdownContainer from './setting_dropdown';
 import PictureDropdownContainer from '../post_dropdown/picture_dropdown';
 import EditDropdownContainer from '../post_dropdown/edit_dropdown';
+import { fetchPost } from '../../actions/post_actions';
 
 class UserHomePage extends React.Component {
 
@@ -15,7 +16,7 @@ class UserHomePage extends React.Component {
 
   componentDidMount(){
     this.props.fetchUsers();
-    // this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchUser(this.props.match.params.userId);
   }
 
 

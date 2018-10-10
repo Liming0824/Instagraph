@@ -51,21 +51,7 @@ const uiReducer = (state = defaultState, action) => {
       return defaultState;
     case OPEN_PICTURE_DROPDOWN:
       return Object.assign({}, state, {picture_dropdown: true, post: action.post});
-    // case RECEIVE_LIKE:
-    //   let newState3 = Object.assign({}, state);
-    //   newState3.post.likes.push(action.like.liker_id);
-    //   return newState3;
-    // case REMOVE_LIKE:
-    //   let newState4 = Object.assign({}, state);
-    //   const idx = newState4.post.likes.indexOf(action.like.liker_id);
-    //   let likes_arr = newState4.post.likes;
-    //   const new_likes_arr = likes_arr.slice(0,idx).concat(likes_arr.slice(idx+1))
-    //   newState4.post.likes = new_likes_arr;
-    //   return newState4;
-    // case RECEIVE_COMMENT:
-    //   let newState5 = Object.assign({}, state);
-    //   newState5 = newState5.post.comments.push({id: action.comment.id,body: action.comment.body,author_name: action.comment.author_name});
-    //   return newState5;
+
     case CLOSE_PICTURE_DROPDOWN:
       return defaultState;
     default:

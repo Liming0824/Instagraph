@@ -10,11 +10,12 @@ class PictureDropdown extends React.Component {
 
   constructor(props){
     super(props);
-    this.state ={
+    this.state = {
       commentValue: '',
       liked: false
     };
   }
+
 
 
   componentDidUpdate(preProps){
@@ -22,7 +23,7 @@ class PictureDropdown extends React.Component {
       this.setState({
         liked: this.props.post.likes.includes(this.props.currentUserId)
       });
-    };
+    }
   }
 
 
@@ -58,6 +59,7 @@ class PictureDropdown extends React.Component {
 
   render() {
     const pic_status = this.props.status ? '' : 'hidden';
+
     return(
       <div className={`picture-dropdown-parent ${pic_status}`} onClick={this.props.closePictureDropdown}>
         <div className='picture-dropdown-child' onClick={e => e.stopPropagation()}>
@@ -65,6 +67,7 @@ class PictureDropdown extends React.Component {
             <img src={this.props.post ? this.props.post.photo_image_url : null} />
             <span>By {this.props.author.username}</span>
           </div>
+
 
         </div>
       </div>
@@ -80,6 +83,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId: state.session.currentUserId,
     status: state.ui.picture_dropdown,
     post: state.ui.post,
+    // posts: state.entities.posts
     // likes: state.ui.post.likes
   };
 };
@@ -87,16 +91,16 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     closePictureDropdown: () => dispatch(closePictureDropdown()),
-    // createLike: (post_id) => dispatch(createLike(post_id)),
-    // createComment: (comment) => dispatch(createComment(comment)),
-    // deleteLike: (post_id) => dispatch(deleteLike(post_id))
+    createLike: (post_id) => dispatch(createLike(post_id)),
+    createComment: (comment) => dispatch(createComment(comment)),
+    deleteLike: (post_id) => dispatch(deleteLike(post_id))
 
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PictureDropdown);
 
-    // let liked = this.props.post ? this.props.post.likes.includes(this.props.currentUserId) : null
+// let liked = this.props.post ? this.props.post.likes.includes(this.props.currentUserId) : null
 
 
 

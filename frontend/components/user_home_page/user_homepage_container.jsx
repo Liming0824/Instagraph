@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUser: (id) => dispatch(fetchUser(id)),
   fetchUsers: () => dispatch(fetchUsers()),
   fetchPosts: ()=> dispatch(fetchPosts()),
+  fetchPost: (id)=> dispatch(fetchPost(id)),
   createFollow: (followee_id) => dispatch(createFollow(followee_id)),
   destroyFollow: (followee_id) => dispatch(destroyFollow(followee_id)),
   openSettingDropdown: () => dispatch(openSettingDropdown()),

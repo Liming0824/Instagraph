@@ -46,7 +46,7 @@ class PostItem extends React.Component {
     this.props.openCommentDropdown();
   }
 
-  handleCancleComment(){
+  handleCancelComment(){
     this.props.closeCommentDropdown();
   }
 
@@ -96,7 +96,7 @@ class PostItem extends React.Component {
             <span>{comment.body}</span>
           </li>
           <div className={`comment-dropdown ${deleteable_status}`}>
-            <button onClick={this.handleCancleComment.bind(this)}>Cancle</button>
+            <button onClick={this.handleCancelComment.bind(this)}>Cancel</button>
             <button onClick={this.handleDeleteComment.bind(this, comment.id)}>Delete</button>
           </div>
         </ul>

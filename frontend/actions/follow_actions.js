@@ -40,7 +40,7 @@ export const destroyFollow = (followee_id) => {
 export const updateFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.updateFollow(followee_id).then(follow => {
-      return dispatch(receiveFollow(follow))
-    })
-  }
-}
+      return dispatch(receiveFollow(follow));
+    });
+  };
+};

@@ -71,6 +71,12 @@ class NavBar extends React.Component {
           </li>
         )
       })
+    }else{
+      result_items = (
+        <li className='no-matchingResults'>
+          <span> no matching results </span>
+        </li>
+      )
     }
 
 

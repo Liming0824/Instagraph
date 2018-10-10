@@ -224,3 +224,7 @@
   justify-content: space-around;
 
 }
+
+.no-matchingResults span{
+  margin: 0 auto;
+}

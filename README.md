@@ -13,8 +13,8 @@ Users can securely sign up, log in, and log out simply by setting an username an
 ## Feature Highlights
 ---
 # User Search & Friends newest post
-Users are able to search other users by entering part of username in the searchbar.
-User also could know the time of the latest post of each friend through the side bar in the homepage.
+Users are able to search other users by entering part of username in the search bar.
+Users also know the time of the latest post of each friend through the side bar in the homepage.
 ![Image description](instagraph_readme_images/search_and_friendspost.png)
 
 # New Follow Notice
@@ -22,7 +22,8 @@ Users could get new follower notice by clicking the heart icon in the nav bar.
 ![Image description](instagraph_readme_images/follow_notice.png)
 
 # New Post
-Users are able to select image, preview, and post a new post. User also could write comment for post, and delete comments which are made by user his/her self or comments under user's own post.
+Users are able to select images, preview them, and create a new post. Users can also write and delete comments for posts.
+
 ![Image description](instagraph_readme_images/new_post.png)
 
 ## Technologies
