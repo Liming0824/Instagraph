@@ -96,7 +96,11 @@ class Api::UsersController < ApplicationController
   end
 
   def update_user
-    params.require(:user).permit(:bio, :user_photo)
+    if params[:user][:user_photo] == 'null'
+      params.require(:user).permit(:bio)
+    else
+      params.require(:user).permit(:bio, :user_photo)
+    end
   end
 
 

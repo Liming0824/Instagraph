@@ -20,7 +20,7 @@ class NoticeDropdown extends React.Component {
   }
 
   handleClick(follower){
-    this.props.history.push(`/homepage/${follower.username}/${follower.id}`)
+    this.props.history.push(`/homepage/${follower.username}/${follower.id}`);
   }
 
 

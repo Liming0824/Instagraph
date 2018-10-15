@@ -13,6 +13,16 @@ class EditDropdown extends React.Component {
       user_photo: null,
       userPhotoUrl: this.props.currentUser.photo_image_url
     };
+    this.cancelDropdown = this.cancelDropdown.bind(this);
+  }
+
+  cancelDropdown(){
+    this.setState({
+      bio: this.props.currentUser.bio,
+      user_photo: null,
+      userPhotoUrl: this.props.currentUser.photo_image_url
+    });
+    this.props.closeEditDropdown();
   }
 
   updateFile(e){
@@ -45,7 +55,7 @@ class EditDropdown extends React.Component {
     this.setState({
       bio: this.props.currentUser.bio,
       user_photo: null,
-      userPhotoUrl: ''
+      userPhotoUrl: this.state.userPhotoUrl
     });
   }
 
@@ -64,7 +74,7 @@ class EditDropdown extends React.Component {
             <div className='bio-and-buttons'>
               <span className='text'>edit your bio: </span>
               <div className='preview-bio'>
-                <textarea onChange={this.handleChange.bind(this)} type='text' value={this.state.bio} ></textarea>
+                <textarea onChange={this.handleChange.bind(this)} type='text' value={this.state.bio}></textarea>
               </div>
               <div className="file-buttons">
                 <div className="open-file-button">
@@ -72,7 +82,7 @@ class EditDropdown extends React.Component {
                     <input hidden type='file' accept='.gif, .jpg, .jpeg, .png' onChange={this.updateFile.bind(this)} name='file'/>
                   </label>
                 </div>
-                <span onClick={this.props.closeEditDropdown}>cancel</span>
+                <span onClick={this.cancelDropdown}>cancel</span>
                 <button>submit</button>
               </div>
             </div>
