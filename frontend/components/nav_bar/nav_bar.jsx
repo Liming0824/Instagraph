@@ -42,7 +42,7 @@ class NavBar extends React.Component {
   }
 
   updateNoticeProps(){
-    this.props.toggleNoticeDropdown()
+    this.props.toggleNoticeDropdown();
   }
 
   handleTitleClick(user){
@@ -101,7 +101,7 @@ class NavBar extends React.Component {
             <PostDropdownContainer />
           </div>
           <div className='support-icons'>
-            <a className='explore' onClick={this.updateExploreProps.bind(this)}><img src={window.navigationImg} /></a>
+
             <a className='fans' onClick={this.updateNoticeProps.bind(this)}><img src={window.likeImg} /></a>
             <a className='go_userpage' onClick={this.GoToUserPage.bind(this)}><img src={window.userImg} /></a>
             <a className='add-post' onClick={this.props.openDropdown}><img src={window.addImg} /></a>
@@ -132,3 +132,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+
+
+// should be inside nav bar render
+//  <a className='explore' onClick={this.updateExploreProps.bind(this)}><img src={window.navigationImg} /></a>
