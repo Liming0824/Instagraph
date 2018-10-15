@@ -17,7 +17,6 @@ class PostIndex extends React.Component {
   }
 
   render(){
-
     const items = this.props.posts.map(post => <PostItem key={post.id} post={post} deletePost={this.props.deletePost}/>);
     return (
       <div className='posts-body'>

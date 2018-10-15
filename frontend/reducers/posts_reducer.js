@@ -34,7 +34,9 @@ export default (state = {}, action) => {
       return newState7;
     case RECEIVE_LIKE:
       let newState3 = Object.assign({},state);
-      newState3[action.like.post_id].likes.push(action.like.liker_id);
+      if(!newState3[action.like.post_id].likes.includes(action.like.liker_id)){
+        newState3[action.like.post_id].likes.push(action.like.liker_id);
+      }
       return newState3;
     case REMOVE_LIKE:
       let newState4 = Object.assign({},state);
