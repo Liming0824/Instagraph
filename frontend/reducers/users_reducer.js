@@ -24,8 +24,9 @@ export default (state = {}, action) => {
       return newState;
     case RECEIVE_FOLLOW:
       let newState2 = merge({}, state);
-      const follower_user = state[action.follow.follower_id];
-      let idx2 = newState2[action.follow.followee_id].followers.map(rec => rec.id).indexOf(follower_user);
+      const follower_user = action.follow.follower_info;
+      // const follower_user = state[action.follow.follower_id];
+      let idx2 = newState2[action.follow.followee_id].followers.map(rec => rec.id).indexOf(follower_user.id);
       if( idx2 === -1){
         newState2[action.follow.followee_id].followers.push(follower_user);
       }else{
@@ -41,7 +42,11 @@ export default (state = {}, action) => {
         newState2[action.follow.followee_id].follower_records[idx3] = {noticed: action.follow.noticed, follower_id: action.follow.follower_id};
       }
       if(newState2[action.follow.follower_id]){
-        const followee_user = state[action.follow.followee_id];
+        let followee_user = state[action.follow.followee_id];
+        newState2[action.follow.follower_id].followings.push(followee_user);
+      }else{
+        let followee_user = state[action.follow.followee_id];
+        newState2[action.follow.follower_id] = action.follow.follower_info;
         newState2[action.follow.follower_id].followings.push(followee_user);
       }
       return newState2;

@@ -128,6 +128,7 @@
   margin: 3px;
   background-color: white;
   cursor: pointer;
+  z-index: 10;
 }
 .search_items li:not(:last-child){
   border-bottom: 0.5px solid lightgrey;

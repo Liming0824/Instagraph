@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createFollow, destroyFollow, updateFollow } from '../../actions/follow_actions';
+import {withRouter} from 'react-router-dom';
 
 
 
@@ -84,4 +85,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoticeDropdown);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NoticeDropdown));
