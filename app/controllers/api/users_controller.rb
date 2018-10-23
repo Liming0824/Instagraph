@@ -66,8 +66,6 @@ class Api::UsersController < ApplicationController
 
 
   def createFollow
-    # @user = User.find(params[:user_id])
-    # @follow = @user.followers.new(follower_id: current_user.id)
     @follow = Follow.new(follower_id: current_user.id, followee_id: params[:user_id])
     if @follow.save
       render '/api/follows/show'

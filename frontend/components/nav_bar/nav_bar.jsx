@@ -4,6 +4,7 @@ import { logout } from '../../actions/session_actions';
 import { Redirect } from 'react-router-dom';
 import { createPost, fetchPost } from '../../actions/post_actions';
 import { receiveFollow, ListenFollow, removeFollow, ListenUnfollow } from '../../actions/follow_actions';
+// import { receiveFollow, removeFollow } from '../../actions/follow_actions';
 import { searchUsers} from '../../actions/user_actions';
 import { openPostDropdown, toggleNoticeDropdown } from '../../actions/modal_actions';
 import PostDropdownContainer from '../post_dropdown/post_dropdown';
@@ -24,6 +25,8 @@ class NavBar extends React.Component {
   componentDidMount(){
     const { currentUser, receiveFollow } = this.props;
     ListenFollow(currentUser.id, this.props.receiveFollow, this.props.removeFollow);
+
+
   }
 
   componentWillReceiveProps(){

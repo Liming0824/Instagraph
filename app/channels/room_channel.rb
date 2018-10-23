@@ -6,10 +6,11 @@ class RoomChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
-    
+
   end
 
-  def follow data
+  def follow(data)
+
     ActionCable.server.broadcast "room_channel", message: data
   end
 

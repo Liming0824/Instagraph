@@ -20,8 +20,8 @@ export const removeFollow = (follow) => {
 };
 
 export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
-  App['currentUser_id'] = App.cable.subscriptions.create(
-    {channel: "RoomChannel", id: currentUser_id},
+  App.room = App.cable.subscriptions.create(
+    {channel: "RoomChannel", room: 'SocketRoom'},
     {
       received: function(data){
         const message = data.message;
@@ -31,11 +31,11 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
           removeFollow(message.message);
         }
       },
-      follow: function(message) {
-        return this.perform('follow', { message: message, action: 'follow' });
+      follow: function(id) {
+        return this.perform('follow', { message: id, action: 'follow' });
       },
-      unfollow: function(message) {
-        return this.perform('unfollow', {message: message, action: 'unfollow' });
+      unfollow: function(id) {
+        return this.perform('unfollow', {message: id, action: 'unfollow' });
       }
 
   }
@@ -43,10 +43,15 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
 };
 
 
+// export const createFollow = (followee_id) => {
+//       // App.room.follow(followee_id);
+//     App.cable.subscriptions.subscriptions[0].follow(followee_id);
+// };
+
 export const createFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.createFollow(followee_id).then(follow => {
-      App['currentUser_id'].follow(follow);
+      App.room.follow(follow);
       }
   );
   };
@@ -55,7 +60,8 @@ export const createFollow = (followee_id) => {
 export const destroyFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.destroyFollow(followee_id).then(follow => {
-      App['currentUser_id'].unfollow(follow);
+      App.room.unfollow(follow);
+      // App.cable.subscriptions.subscriptions[0].unfollow(follow);
     }
   );
   };
@@ -64,7 +70,8 @@ export const destroyFollow = (followee_id) => {
 export const updateFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.updateFollow(followee_id).then(follow => {
-      App['currentUser_id'].follow(follow);
+      // App.cable.subscriptions.subscriptions[0].follow(follow);
+      App.room.follow(follow);
     });
   };
 };
