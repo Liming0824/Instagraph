@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount ActionCable.server => '/cable'
   root to: 'static_pages#root';
   namespace :api, defaults: {format: 'json'} do
     resources :users do
@@ -19,7 +20,5 @@ Rails.application.routes.draw do
       post '/comments' => 'posts#createComment'
     end
     resources :comments, only: [:destroy]
-      # resources :likes, only: [:create]
-    # resources :likes, only: [:destroy]
   end
 end

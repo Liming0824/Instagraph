@@ -15,7 +15,7 @@ export default (state = {}, action) => {
       return action.users;
     case RECEIVE_POST:
       let newState7 = merge({}, state);
-      newState7[action.post.posterId].posts.push(action.post)
+      newState7[action.post.posterId].posts.push(action.post);
       return newState7;
     case RECEIVE_USER:
     case RECEIVE_CURRENT_USER:
@@ -25,30 +25,46 @@ export default (state = {}, action) => {
     case RECEIVE_FOLLOW:
       let newState2 = merge({}, state);
       const follower_user = state[action.follow.follower_id];
-      newState2[action.follow.followee_id].followers.push(follower_user);
-      let follower_records_arr = newState2[action.follow.followee_id].follower_records.map(rec => rec.follower_id);
-      if(follower_records_arr.includes(action.follow.follower_id)){
-        const idx = follower_records_arr.indexOf(action.follow.follower_id);
-        newState2[action.follow.followee_id].follower_records = newState2[action.follow.followee_id].follower_records.slice(0, idx).concat(newState2[action.follow.followee_id].follower_records.slice(idx+1))
+      let idx2 = newState2[action.follow.followee_id].followers.map(rec => rec.id).indexOf(follower_user);
+      if( idx2 === -1){
+        newState2[action.follow.followee_id].followers.push(follower_user);
       }else{
-        newState2[action.follow.followee_id].follower_records.push({noticed: action.follow.noticed, follower_id: action.follow.follower_id});
+        newState2[action.follow.followee_id].followers[idx2] = follower_user;
       }
 
-      const followee_user = state[action.follow.followee_id];
-      newState2[action.follow.follower_id].followings.push(followee_user);
+      let follower_records_arr = newState2[action.follow.followee_id].follower_records.map(rec => rec.follower_id);
+
+      let idx3 = follower_records_arr.indexOf(action.follow.follower_id);
+      if(idx3 === -1){
+        newState2[action.follow.followee_id].follower_records.push({noticed: action.follow.noticed, follower_id: action.follow.follower_id});
+      }else{
+        newState2[action.follow.followee_id].follower_records[idx3] = {noticed: action.follow.noticed, follower_id: action.follow.follower_id};
+      }
+      if(newState2[action.follow.follower_id]){
+        const followee_user = state[action.follow.followee_id];
+        newState2[action.follow.follower_id].followings.push(followee_user);
+      }
       return newState2;
     case REMOVE_FOLLOW:
       let newState3 = merge({}, state);
       let follower_arr = newState3[action.follow.followee_id].followers;
-      const follower_idx = follower_arr.map(user => user.id).indexOf(action.follow.follower_id);
-      follower_arr = follower_arr.slice(0, follower_idx).concat(follower_arr.slice(follower_idx+1));
+      let follower_idx = follower_arr.map(user => user.id).indexOf(action.follow.follower_id);
+      while(follower_idx !== -1){
+        follower_arr = follower_arr.slice(0, follower_idx).concat(follower_arr.slice(follower_idx+1));
+        follower_idx = follower_arr.map(user => user.id).indexOf(action.follow.follower_id);
+      }
       newState3[action.follow.followee_id].followers = follower_arr;
-      const idx = newState3[action.follow.followee_id].follower_records.map(rec => rec.follower_id).indexOf(action.follow.follower_id);
-      newState3[action.follow.followee_id].follower_records = newState3[action.follow.followee_id].follower_records.slice(0, idx).concat(newState3[action.follow.followee_id].follower_records.slice(idx+1))
-
+      let idx = newState3[action.follow.followee_id].follower_records.map(rec => rec.follower_id).indexOf(action.follow.follower_id);
+      while(idx !== -1){
+        newState3[action.follow.followee_id].follower_records = newState3[action.follow.followee_id].follower_records.slice(0, idx).concat(newState3[action.follow.followee_id].follower_records.slice(idx+1));
+        idx = newState3[action.follow.followee_id].follower_records.map(rec => rec.follower_id).indexOf(action.follow.follower_id);
+      }
       let following_arr = newState3[action.follow.follower_id].followings;
-      const following_idx = following_arr.map(user => user.id).indexOf(action.follow.followee_id);
-      following_arr = following_arr.slice(0, following_idx).concat(following_arr.slice(following_idx+1));
+      let following_idx = following_arr.map(user => user.id).indexOf(action.follow.followee_id);
+      while(following_idx !== -1){
+        following_arr = following_arr.slice(0, following_idx).concat(following_arr.slice(following_idx+1));
+        following_idx = following_arr.map(user => user.id).indexOf(action.follow.followee_id);
+      }
       newState3[action.follow.follower_id].followings = following_arr;
       return newState3;
       case RECEIVE_LIKE:

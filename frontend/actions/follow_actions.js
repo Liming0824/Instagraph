@@ -19,28 +19,52 @@ export const removeFollow = (follow) => {
   };
 };
 
+export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
+  App['currentUser_id'] = App.cable.subscriptions.create(
+    {channel: "RoomChannel", id: currentUser_id},
+    {
+      received: function(data){
+        const message = data.message;
+        if(message.action === 'follow'){
+          receiveFollow(message.message);
+        }else{
+          removeFollow(message.message);
+        }
+      },
+      follow: function(message) {
+        return this.perform('follow', { message: message, action: 'follow' });
+      },
+      unfollow: function(message) {
+        return this.perform('unfollow', {message: message, action: 'unfollow' });
+      }
+
+  }
+);
+};
+
 
 export const createFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.createFollow(followee_id).then(follow => {
-
-      return dispatch(receiveFollow(follow));
-    });
+      App['currentUser_id'].follow(follow);
+      }
+  );
   };
 };
 
 export const destroyFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.destroyFollow(followee_id).then(follow => {
-      return dispatch(removeFollow(follow));
-    });
+      App['currentUser_id'].unfollow(follow);
+    }
+  );
   };
 };
 
 export const updateFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.updateFollow(followee_id).then(follow => {
-      return dispatch(receiveFollow(follow));
+      App['currentUser_id'].follow(follow);
     });
   };
 };

@@ -6,6 +6,7 @@ import { createFollow, destroyFollow, updateFollow } from '../../actions/follow_
 
 class NoticeDropdown extends React.Component {
 
+
   handleUnfollow(id){
     this.props.destroyFollow(id);
     this.props.updateFollow(id);
@@ -25,11 +26,11 @@ class NoticeDropdown extends React.Component {
 
 
   render(){
-    let records;
+    // let records;
     let items;
     if(this.props.currentUser){
-      records = this.props.currentUser.follower_records.filter(rec => rec.noticed === false);
-      if(records.length === 0){
+      // records = this.props.currentUser.follower_records.filter(rec => rec.noticed === false);
+      if(this.props.records.length === 0){
         items =  (
           <div className='no-new-notice'>
             <span>No new notice</span>
@@ -38,7 +39,7 @@ class NoticeDropdown extends React.Component {
       }else{
         const currentUser = this.props.currentUser
         items = currentUser.followers.map((follower,idx) => {
-          if(records.map(rec => rec.follower_id).includes(follower.id)){
+          if(this.props.records.map(rec => rec.follower_id).includes(follower.id)){
             return (
               <li key={idx}>
                 <img src={follower.photo_image_url} onClick={this.handleClick.bind(this, follower)}/>
@@ -68,7 +69,8 @@ class NoticeDropdown extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.currentUserId],
-    status: state.ui.notice_dropdown
+    status: state.ui.notice_dropdown,
+    records: state.entities.users[state.session.currentUserId].follower_records ? state.entities.users[state.session.currentUserId].follower_records.filter(rec => rec.noticed === false) : []
   };
 };
 

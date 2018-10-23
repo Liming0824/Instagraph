@@ -37,6 +37,7 @@ class UserHomePage extends React.Component {
 
   handleFollow(){
     this.props.createFollow(this.props.pageOwner.id);
+    // this.props.receiveFollow({followee_id: this.props.pageOwner.id, follower_id: this.props.currentUser.id});
   }
 
 

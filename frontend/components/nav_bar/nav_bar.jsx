@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { Redirect } from 'react-router-dom';
 import { createPost, fetchPost } from '../../actions/post_actions';
+import { receiveFollow, ListenFollow, removeFollow, ListenUnfollow } from '../../actions/follow_actions';
 import { searchUsers } from '../../actions/user_actions';
 import { openPostDropdown, toggleNoticeDropdown } from '../../actions/modal_actions';
 import PostDropdownContainer from '../post_dropdown/post_dropdown';
@@ -18,6 +19,11 @@ class NavBar extends React.Component {
       inputValue: '',
       matchingResults: []
     };
+  }
+
+  componentDidMount(){
+    const { currentUser, receiveFollow } = this.props;
+    ListenFollow(currentUser.id, this.props.receiveFollow, this.props.removeFollow);
   }
 
   componentWillReceiveProps(){
@@ -79,8 +85,8 @@ class NavBar extends React.Component {
       )
     }
 
-
     let show_status = this.state.inputValue === '' ? "hidden" : ''
+    const length = this.props.currentUser.follower_records.filter(rec => rec.noticed === false).length;
       return (
         <section className='nav_bar'>
           <div className='logo-and-ig' onClick={this.goHomePage.bind(this)}>
@@ -101,8 +107,7 @@ class NavBar extends React.Component {
             <PostDropdownContainer />
           </div>
           <div className='support-icons'>
-
-            <a className='fans' onClick={this.updateNoticeProps.bind(this)}><img src={window.likeImg} /></a>
+            <a className='fans' onClick={this.updateNoticeProps.bind(this)}><img src={length === 0 ? window.likeImg : window.redlikeImg} /></a>
             <a className='go_userpage' onClick={this.GoToUserPage.bind(this)}><img src={window.userImg} /></a>
             <a className='add-post' onClick={this.props.openDropdown}><img src={window.addImg} /></a>
             <NoticeDropdown />
@@ -123,6 +128,8 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = (dispatch) => ({
+  receiveFollow: (follow) => dispatch(receiveFollow(follow)),
+  removeFollow: (follow) => dispatch(removeFollow(follow)),
   logout: () => dispatch(logout()),
   createPost: (post) => dispatch(createPost(post)),
   searchUsers: (query) => dispatch(searchUsers(query)),

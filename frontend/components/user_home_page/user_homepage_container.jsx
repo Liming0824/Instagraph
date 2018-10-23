@@ -4,6 +4,7 @@ import { createPost } from '../../actions/post_actions';
 import { fetchPost, fetchPosts, deletePost } from '../../actions/post_actions';
 import { fetchUser, fetchUsers } from '../../actions/user_actions';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
+// import { receiveFollow} from '../../actions/follow_actions';
 import {withRouter} from 'react-router-dom';
 import { openSettingDropdown, openPictureDropdown, openEditDropdown } from '../../actions/modal_actions';
 
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPosts: ()=> dispatch(fetchPosts()),
   fetchPost: (id)=> dispatch(fetchPost(id)),
   createFollow: (followee_id) => dispatch(createFollow(followee_id)),
+  // receiveFollow: (follow) => dispatch(receiveFollow(follow)),
   destroyFollow: (followee_id) => dispatch(destroyFollow(followee_id)),
   openSettingDropdown: () => dispatch(openSettingDropdown()),
   openPictureDropdown: (post) => dispatch(openPictureDropdown(post)),
