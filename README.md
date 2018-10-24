@@ -18,8 +18,8 @@ Users also know the time of the latest post of each friend through the side bar 
 ![Image description](instagraph_readme_images/search_and_friendspost.png)
 
 # New Follow Notice
-Users could get new follower notice by clicking the heart icon in the nav bar.
-![Image description](instagraph_readme_images/follow_notice.png)
+Users could get new follower notice
+![Image description](instagraph_readme_images/giphy.gif)
 
 # New Post
 Users are able to select images, preview them, and create a new post. Users can also write and delete comments for posts.
