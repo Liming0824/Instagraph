@@ -25,7 +25,6 @@ export default (state = {}, action) => {
     case RECEIVE_FOLLOW:
       let newState2 = merge({}, state);
       const follower_user = action.follow.follower_info;
-      // const follower_user = state[action.follow.follower_id];
       let idx2 = newState2[action.follow.followee_id].followers.map(rec => rec.id).indexOf(follower_user.id);
       if( idx2 === -1){
         newState2[action.follow.followee_id].followers.push(follower_user);

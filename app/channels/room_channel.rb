@@ -10,7 +10,6 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def follow(data)
-
     ActionCable.server.broadcast "room_channel", message: data
   end
 

@@ -10,7 +10,8 @@ class UserHomePage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      likes_arr: []
+      likes_arr: [],
+      action_able: true,
     };
   }
 
@@ -31,12 +32,20 @@ class UserHomePage extends React.Component {
 
 
   handleUnfollow(){
-    this.props.destroyFollow(this.props.pageOwner.id);
+    if(this.state.action_able){
+      this.setState({action_able: false});
+      this.props.destroyFollow(this.props.pageOwner.id);
+      this.setState({action_able: true});
+    }
   }
 
 
   handleFollow(){
-    this.props.createFollow(this.props.pageOwner.id);
+    if(this.state.action_able){
+      this.setState({action_able: false});
+      this.props.createFollow(this.props.pageOwner.id);
+      this.setState({action_able: true});
+    }
   }
 
 

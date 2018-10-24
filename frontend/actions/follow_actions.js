@@ -43,10 +43,6 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
 };
 
 
-// export const createFollow = (followee_id) => {
-//       // App.room.follow(followee_id);
-//     App.cable.subscriptions.subscriptions[0].follow(followee_id);
-// };
 
 export const createFollow = (followee_id) => {
   return (dispatch) => {
@@ -61,7 +57,6 @@ export const destroyFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.destroyFollow(followee_id).then(follow => {
       App.room.unfollow(follow);
-      // App.cable.subscriptions.subscriptions[0].unfollow(follow);
     }
   );
   };
@@ -70,7 +65,6 @@ export const destroyFollow = (followee_id) => {
 export const updateFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.updateFollow(followee_id).then(follow => {
-      // App.cable.subscriptions.subscriptions[0].follow(follow);
       App.room.follow(follow);
     });
   };
