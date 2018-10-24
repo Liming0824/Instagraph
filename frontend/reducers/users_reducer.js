@@ -6,6 +6,7 @@ import { RECEIVE_COMMENT } from '../actions/comment_actions';
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
 import merge from 'lodash/merge';
 
+
 export default (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){

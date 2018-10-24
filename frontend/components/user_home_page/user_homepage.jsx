@@ -4,6 +4,14 @@ import SettingDropdownContainer from './setting_dropdown';
 import PictureDropdownContainer from '../post_dropdown/picture_dropdown';
 import EditDropdownContainer from '../post_dropdown/edit_dropdown';
 import { fetchPost } from '../../actions/post_actions';
+import { FadeLoader } from 'react-spinners';
+import { css } from 'react-emotion';
+
+const override = css`
+    display: block;
+    margin: 30% auto;
+    border-color: red;
+`;
 
 class UserHomePage extends React.Component {
 
@@ -13,6 +21,7 @@ class UserHomePage extends React.Component {
       likes_arr: [],
       followable: true,
       unfollowable: true,
+      newuser_fetched: false,
     };
   }
 
@@ -25,9 +34,11 @@ class UserHomePage extends React.Component {
   componentDidUpdate(preProps){
     if(preProps.match.params.userId !== this.props.match.params.userId){
       this.props.fetchUser(this.props.match.params.userId);
-      this.setState({
-        likes_arr: this.props.pageOwner.posts.map(post => post.likes.length)
-      });
+      if (this.props.pageOwner) {
+        this.setState({
+          likes_arr: this.props.pageOwner.posts.map(post => post.likes.length)
+        });
+      }
     }
     if(!this.state.followable && this.props.followed){
       this.setState({followable: true});
@@ -133,7 +144,7 @@ class UserHomePage extends React.Component {
     }else{
       return (
         <div>
-          <h1>loading or double check the path</h1>
+          <FadeLoader className={override} sizeUnit={"px"} size={150} color={'grey'} />
         </div>
       )
     }
