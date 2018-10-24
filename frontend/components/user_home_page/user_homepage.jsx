@@ -23,7 +23,6 @@ class UserHomePage extends React.Component {
 
 
   componentDidUpdate(preProps){
-    debugger
     if(preProps.match.params.userId !== this.props.match.params.userId){
       this.props.fetchUser(this.props.match.params.userId);
       this.setState({
@@ -40,25 +39,17 @@ class UserHomePage extends React.Component {
 
 
   handleUnfollow(){
-    debugger
     if(this.state.unfollowable){
-      debugger
       this.setState({unfollowable: false});
       this.props.destroyFollow(this.props.pageOwner.id);
-      debugger
-      // this.setState({action_able: true});
     }
   }
 
 
   handleFollow(){
-    debugger
     if(this.state.followable){
-      debugger
       this.setState({followable: false});
       this.props.createFollow(this.props.pageOwner.id);
-      debugger
-      // this.setState({action_able: true});
     }
   }
 
@@ -73,7 +64,6 @@ class UserHomePage extends React.Component {
 
 
   render(){
-    debugger
     let ownerPosts;
     let items;
     if(this.props.pageOwner && (this.props.match.params.username === this.props.pageOwner.username)){

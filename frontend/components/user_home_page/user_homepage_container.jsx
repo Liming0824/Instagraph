@@ -10,7 +10,6 @@ import { openSettingDropdown, openPictureDropdown, openEditDropdown } from '../.
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     currentUser: state.entities.users[state.session.currentUserId],
     loggedIn: !!state.session.currentUserId,

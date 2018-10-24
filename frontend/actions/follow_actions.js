@@ -45,7 +45,6 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
 
 
 export const createFollow = (followee_id) => {
-  debugger
   return (dispatch) => {
     return FollowAPIUtil.createFollow(followee_id).then(follow => {
       App.room.follow(follow);
@@ -55,7 +54,6 @@ export const createFollow = (followee_id) => {
 };
 
 export const destroyFollow = (followee_id) => {
-  debugger
   return (dispatch) => {
     return FollowAPIUtil.destroyFollow(followee_id).then(follow => {
       App.room.unfollow(follow);
