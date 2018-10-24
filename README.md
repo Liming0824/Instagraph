@@ -18,7 +18,8 @@ Users also know the time of the latest post of each friend through the side bar 
 ![Image description](instagraph_readme_images/search_and_friendspost.png)
 
 # New Follow Notice
-Users could get new follower notice
+Users could get new follower notice.
+
 ![Image description](instagraph_readme_images/giphy.gif)
 
 # New Post
