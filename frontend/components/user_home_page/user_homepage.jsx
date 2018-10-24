@@ -97,7 +97,7 @@ class UserHomePage extends React.Component {
                   <button className='button' onClick={this.handleUnfollow.bind(this)}>Following</button> :
                   <button className='button blue-button' onClick={this.handleFollow.bind(this)}>Follow</button>
                 ) :
-                <button className='button'>Updating</button>
+                <button className='button updating'>Updating</button>
               }
             </div>
           )
