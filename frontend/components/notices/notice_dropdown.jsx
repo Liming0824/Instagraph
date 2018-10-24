@@ -27,10 +27,8 @@ class NoticeDropdown extends React.Component {
 
 
   render(){
-    // let records;
     let items;
     if(this.props.currentUser){
-      // records = this.props.currentUser.follower_records.filter(rec => rec.noticed === false);
       if(this.props.records.length === 0){
         items =  (
           <div className='no-new-notice'>

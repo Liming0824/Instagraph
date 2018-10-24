@@ -11,7 +11,8 @@ class UserHomePage extends React.Component {
     super(props);
     this.state = {
       likes_arr: [],
-      action_able: true,
+      followable: true,
+      unfollowable: true,
     };
   }
 
@@ -22,29 +23,42 @@ class UserHomePage extends React.Component {
 
 
   componentDidUpdate(preProps){
+    debugger
     if(preProps.match.params.userId !== this.props.match.params.userId){
       this.props.fetchUser(this.props.match.params.userId);
       this.setState({
         likes_arr: this.props.pageOwner.posts.map(post => post.likes.length)
       });
     }
+    if(!this.state.followable && this.props.followed){
+      this.setState({followable: true});
+    }
+    if(!this.state.unfollowable && !this.props.followed){
+      this.setState({unfollowable: true});
+    }
   }
 
 
   handleUnfollow(){
-    if(this.state.action_able){
-      this.setState({action_able: false});
+    debugger
+    if(this.state.unfollowable){
+      debugger
+      this.setState({unfollowable: false});
       this.props.destroyFollow(this.props.pageOwner.id);
-      this.setState({action_able: true});
+      debugger
+      // this.setState({action_able: true});
     }
   }
 
 
   handleFollow(){
-    if(this.state.action_able){
-      this.setState({action_able: false});
+    debugger
+    if(this.state.followable){
+      debugger
+      this.setState({followable: false});
       this.props.createFollow(this.props.pageOwner.id);
-      this.setState({action_able: true});
+      debugger
+      // this.setState({action_able: true});
     }
   }
 
@@ -59,6 +73,7 @@ class UserHomePage extends React.Component {
 
 
   render(){
+    debugger
     let ownerPosts;
     let items;
     if(this.props.pageOwner && (this.props.match.params.username === this.props.pageOwner.username)){
@@ -86,9 +101,13 @@ class UserHomePage extends React.Component {
             <div className="follow_button_open">
               <span>{this.props.match.params.username}</span>
               {
-                this.props.followed ?
-                <button className='button' onClick={this.handleUnfollow.bind(this)}>Following</button> :
-                <button className='button blue-button' onClick={this.handleFollow.bind(this)}>Follow</button>
+                (this.state.followable && this.state.unfollowable) ?
+                (
+                  this.props.followed ?
+                  <button className='button' onClick={this.handleUnfollow.bind(this)}>Following</button> :
+                  <button className='button blue-button' onClick={this.handleFollow.bind(this)}>Follow</button>
+                ) :
+                <button className='button'>Updating</button>
               }
             </div>
           )
