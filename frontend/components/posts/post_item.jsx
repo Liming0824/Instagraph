@@ -165,7 +165,3 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostItem));
-//here photo_image_url is in aws, if use 'image_url' then should be database local image
-// <a className="comment-share" onClick={this.handleShare.bind(this)}><img src={window.shareImg}/></a>
-// <a className="comment-flag" onClick={this.handleTag.bind(this)}><img src={window.tagImg}/></a>
-// should be added in <ul classname='comment' />

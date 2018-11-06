@@ -15,9 +15,7 @@ export const signup = user => {
     url: '/api/users',
     data: {
       user: user
-    },
-    // contentType: false,
-    // processData: false
+    }
   });
 };
 

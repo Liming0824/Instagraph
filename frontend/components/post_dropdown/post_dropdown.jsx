@@ -70,7 +70,6 @@ class Dropdown extends React.Component {
       </div>
     )
   }
-// <div className="cancel-button" onClick={this.props.closePostDropdown}>
 }
 
 const mapStateToProps = (state) =>{

@@ -28,35 +28,6 @@ class PictureDropdown extends React.Component {
 
 
 
-
-  //
-  // handleLike(){
-  //   if(this.props.post.likes.includes(this.props.currentUserId)){
-  //     this.props.deleteLike(this.props.post.id);
-  //   }else{
-  //     this.props.createLike(this.props.post.id);
-  //   }
-  // }
-
-  // handleCommentImg(){
-  //   document.getElementsByClassName(`picture-comment-input-bar-${this.props.post ? this.props.post.id : ''}`)[0].focus();
-  // }
-  //
-  // handleSubmitComment(e){
-  //   e.preventDefault();
-  //   this.props.createComment({post_id: this.props.post.id, body: this.state.commentValue});
-  //   this.setState({
-  //     commentValue: ''
-  //   });
-  // }
-  //
-  // updateComment(e){
-  //   this.setState({
-  //     commentValue: e.target.value
-  //   });
-  // }
-
-
   render() {
     const pic_status = this.props.status ? '' : 'hidden';
 
@@ -67,8 +38,6 @@ class PictureDropdown extends React.Component {
             <img src={this.props.post ? this.props.post.photo_image_url : null} />
             <span>By {this.props.author.username}</span>
           </div>
-
-
         </div>
       </div>
     )
@@ -83,8 +52,6 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId: state.session.currentUserId,
     status: state.ui.picture_dropdown,
     post: state.ui.post,
-    // posts: state.entities.posts
-    // likes: state.ui.post.likes
   };
 };
 
@@ -99,45 +66,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PictureDropdown);
-
-// let liked = this.props.post ? this.props.post.likes.includes(this.props.currentUserId) : null
-
-
-
-//should be inside render
-    // <div className='picture-icons'>
-    //   <a className="picture-like" onClick={this.handleLike.bind(this)}><img src={liked ? window.redlikeImg : window.likeImg}/></a>
-    //   <a className="picture-comment" onClick={this.handleCommentImg.bind(this)}><img src={window.commentImg}/></a>
-    // </div>
-    // <div className="picture-comments-container">
-    //     {items}
-    // </div>
-    //
-    // <footer>
-    //   <form onSubmit={this.handleSubmitComment.bind(this)}>
-    //     <input required
-    //       className={`picture-comment-input-bar-${ this.props.post ? this.props.post.id : ''}`}
-    //       type="text"
-    //       value={this.state.commentValue}
-    //       onChange={this.updateComment.bind(this)}
-    //       placeholder='Add a comment'
-    //       />
-    //     <input type="submit" hidden/>
-    //   </form>
-    // </footer>
-
-
-
-  // should be poster name, in render
-  // <ul>
-    // <li>
-    //   <img src={this.props.author.photo_image_url}/>
-    // </li>
-  // </ul>
-
-
-// should be over all comments
-  // <div className="com-container">
-  //
-  //
-  // </div>
