@@ -13,25 +13,31 @@ class Dropdown extends React.Component {
       photoUrl: ''
     };
     this.closeDropdown = this.closeDropdown.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   updateFile(e){
+    debugger
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
+      debugger
       this.setState({photo: file, photoUrl: fileReader.result});
     };
+    debugger
     if(file){
       fileReader.readAsDataURL(file);
     }else {
       this.setState({ photo: null, photoUrl: ""});
     }
+    e.target.value = '';
   }
 
 
   handleSubmit(e){
     e.preventDefault();
     let formData = new FormData();
+    debugger
     formData.append('post[image_url]', this.state.image_url);
     formData.append('post[photo]', this.state.photo);
     this.props.createPost(formData);
@@ -43,6 +49,7 @@ class Dropdown extends React.Component {
   }
 
   closeDropdown(){
+    debugger
     this.setState({
       photoUrl: '',
       photo: null
@@ -68,10 +75,10 @@ class Dropdown extends React.Component {
             <div className="file-buttons">
               <div className="open-file-button">
                 <label>Choose a file
-                  <input hidden type='file' accept='.gif, .jpg, .jpeg, .png' onChange={this.updateFile.bind(this)} name='file'/>
+                  <input hidden type='file' accept='.gif, .jpg, .jpeg, .png'  onChange={this.updateFile} name='file'/>
                 </label>
               </div>
-              <span onClick={this.props.closePostDropdown}>cancel</span>
+              <span onClick={this.closeDropdown}>cancel</span>
               <button>submit</button>
             </div>
           </form>
@@ -95,3 +102,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);
+// <input hidden type='file' accept='.gif, .jpg, .jpeg, .png' onChange={this.updateFile.bind(this)} name='file'/>
