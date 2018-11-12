@@ -17,14 +17,11 @@ class Dropdown extends React.Component {
   }
 
   updateFile(e){
-    debugger
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      debugger
       this.setState({photo: file, photoUrl: fileReader.result});
     };
-    debugger
     if(file){
       fileReader.readAsDataURL(file);
     }else {
@@ -37,7 +34,6 @@ class Dropdown extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     let formData = new FormData();
-    debugger
     formData.append('post[image_url]', this.state.image_url);
     formData.append('post[photo]', this.state.photo);
     this.props.createPost(formData);
@@ -49,7 +45,6 @@ class Dropdown extends React.Component {
   }
 
   closeDropdown(){
-    debugger
     this.setState({
       photoUrl: '',
       photo: null
