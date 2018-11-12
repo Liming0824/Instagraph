@@ -12,6 +12,7 @@ class Dropdown extends React.Component {
       photo: null,
       photoUrl: ''
     };
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
   updateFile(e){
@@ -41,6 +42,14 @@ class Dropdown extends React.Component {
     });
   }
 
+  closeDropdown(){
+    this.setState({
+      photoUrl: '',
+      photo: null
+    });
+    this.props.closePostDropdown();
+  }
+
 
   AddNewPost(){
     document.getElementsByClassName('newpost-input')[0].click();
@@ -50,7 +59,7 @@ class Dropdown extends React.Component {
     const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
     const post_status = this.props.status ? '' : 'hidden';
     return (
-      <div className={`post-dropdown-parent ${post_status}`} onClick={this.props.closePostDropdown}>
+      <div className={`post-dropdown-parent ${post_status}`} onClick={this.closeDropdown}>
         <div className='post-dropdown-child' onClick={e => e.stopPropagation()}>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <div className="preview-holder">
