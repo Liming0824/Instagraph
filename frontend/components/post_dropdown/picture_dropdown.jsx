@@ -28,6 +28,7 @@ class PictureDropdown extends React.Component {
   }
 
   handleRemove(id){
+    debugger
     this.props.deletePost(id);
     this.props.closePictureDropdown();
   }
