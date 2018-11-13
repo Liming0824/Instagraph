@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closePictureDropdown } from '../../actions/modal_actions';
 import { createLike, deleteLike } from '../../actions/like_actions';
 import { createComment, deleteComment } from '../../actions/comment_actions';
+import { deletePost } from '../../actions/post_actions';
 
 
 
@@ -26,6 +27,11 @@ class PictureDropdown extends React.Component {
     }
   }
 
+  handleRemove(id){
+    this.props.deletePost(id);
+    this.props.closePictureDropdown();
+  }
+
 
 
   render() {
@@ -34,9 +40,31 @@ class PictureDropdown extends React.Component {
     return(
       <div className={`picture-dropdown-parent ${pic_status}`} onClick={this.props.closePictureDropdown}>
         <div className='picture-dropdown-child' onClick={e => e.stopPropagation()}>
+          <div className="authorname-and-button-container">
+            {
+              this.props.author  ?
+              (
+                <div className="authorname-and-button">
+                  <div className="picture-container">
+                    <img src={this.props.author.photo_image_url} />
+                  </div>
+                  {
+                    (this.props.author && this.props.author.id === this.props.currentUserId) ?
+                    <button onClick={this.handleRemove.bind(this, this.props.post.id)} >remove post</button> :
+                    null
+                  }
+                </div>
+              ) :
+              null
+            }
+          </div>
           <div className='pic-container'>
             <img src={this.props.post ? this.props.post.photo_image_url : null} />
-            <span>By {this.props.author.username}</span>
+            {
+              this.props.author ?
+              <span>By {this.props.author.username}</span> :
+              null
+            }
           </div>
         </div>
       </div>
@@ -49,6 +77,7 @@ class PictureDropdown extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    author: state.ui.post ? state.entities.users[state.ui.post.posterId] : null,
     currentUserId: state.session.currentUserId,
     status: state.ui.picture_dropdown,
     post: state.ui.post,
@@ -57,6 +86,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    deletePost: (id) => dispatch(deletePost(id)),
     closePictureDropdown: () => dispatch(closePictureDropdown()),
     createLike: (post_id) => dispatch(createLike(post_id)),
     createComment: (comment) => dispatch(createComment(comment)),

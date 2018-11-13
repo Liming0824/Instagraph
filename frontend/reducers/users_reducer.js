@@ -1,10 +1,11 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_POSTS, RECEIVE_POST } from '../actions/post_actions';
+import { RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST } from '../actions/post_actions';
 import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from '../actions/follow_actions';
 import { RECEIVE_USER, RECEIVE_USERS, SEARCH_USERS } from '../actions/user_actions';
 import { RECEIVE_COMMENT } from '../actions/comment_actions';
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
 import merge from 'lodash/merge';
+
 
 
 export default (state = {}, action) => {
@@ -18,6 +19,13 @@ export default (state = {}, action) => {
       let newState7 = merge({}, state);
       newState7[action.post.posterId].posts.push(action.post);
       return newState7;
+    case REMOVE_POST:
+      let newState8 = merge({}, state);
+      let posts = newState8[action.post.posterId].posts;
+      let index = posts.map(el => el.id).indexOf(action.post.id);
+      posts = posts.slice(0,index).concat(posts.slice(index+1));
+      newState8[action.post.posterId].posts = posts;
+      return newState8;
     case RECEIVE_USER:
     case RECEIVE_CURRENT_USER:
       let newState = merge({}, state);

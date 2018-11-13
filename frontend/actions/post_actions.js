@@ -23,10 +23,10 @@ export const receivePost = (post) => {
   };
 };
 
-export const removePost = (id) => {
+export const removePost = (post) => {
   return {
     type: REMOVE_POST,
-    id: id
+    post: post
   };
 };
 
@@ -69,8 +69,8 @@ export const createPost = (post) => {
 
 export const deletePost = (id) => {
   return (dispatch) => {
-    return PostAPIUtil.deletePost(id).then(() => {
-      return dispatch(removePost(id));
+    return PostAPIUtil.deletePost(id).then((post) => {
+      return dispatch(removePost(post));
     },
     errors => {
       return dispatch({type: RECEIVE_POST_ERRORS, errors: errors.responseJSON });
