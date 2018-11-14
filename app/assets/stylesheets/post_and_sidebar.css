@@ -129,6 +129,7 @@
   position: absolute;
   background-color: white;
   border-bottom: 0.5px solid lightgrey;
+  z-index:2;
 }
 
 .search_items li{
