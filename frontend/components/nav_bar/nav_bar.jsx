@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { createPost, fetchPost } from '../../actions/post_actions';
 import { receiveFollow, ListenFollow, removeFollow, ListenUnfollow } from '../../actions/follow_actions';
 import { searchUsers} from '../../actions/user_actions';
-import { openPostDropdown, toggleNoticeDropdown } from '../../actions/modal_actions';
+import { openPostDropdown, ToggleNoticeDropdown } from '../../actions/modal_actions';
 import PostDropdownContainer from '../post_dropdown/post_dropdown';
 import NoticeDropdown from '../notices/notice_dropdown';
 
@@ -43,13 +43,11 @@ class NavBar extends React.Component {
     this.handleSearch.bind(this)(e.target.value);
   }
 
-  // updateExploreProps(){
-  //
-  // }
 
-  updateNoticeProps(){
-    this.props.toggleNoticeDropdown();
+  ToggleNoticeProps(){
+    this.props.ToggleNoticeDropdown();
   }
+
 
   handleTitleClick(user){
     this.setState({inputValue: ''});
@@ -107,8 +105,12 @@ class NavBar extends React.Component {
             <PostDropdownContainer />
           </div>
           <div className='support-icons'>
-            <a className='fans' onClick={this.updateNoticeProps.bind(this)}><img src={length === 0 ? window.likeImg : window.redlikeImg} /></a>
-            <a className='go_userpage' onClick={this.GoToUserPage.bind(this)}><img src={window.userImg} /></a>
+            <a className='fans'
+              onClick={this.ToggleNoticeProps.bind(this)}>
+              <img src={length === 0 ? window.likeImg : window.redlikeImg} />
+            </a>
+            <a className='go_userpage' onClick={this.GoToUserPage.bind(this)}><img src={window.userImg} />
+          </a>
             <a className='add-post' onClick={this.props.openDropdown}><img src={window.addImg} /></a>
             <NoticeDropdown />
           </div>
@@ -136,7 +138,7 @@ const mapDispatchToProps = (dispatch) => ({
   searchUsers: (query) => dispatch(searchUsers(query)),
   fetchPost: (id) => dispatch(fetchPost(id)),
   openDropdown: () => dispatch(openPostDropdown()),
-  toggleNoticeDropdown: () => dispatch(toggleNoticeDropdown()),
+  ToggleNoticeDropdown: () => dispatch(ToggleNoticeDropdown()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -6,7 +6,6 @@
 }
 
 .post-top-comment .post-top{
-  /* border: 0.5px solid lightgrey; */
   width: 605px;
   height: 50px;
 }
@@ -129,6 +128,8 @@
   position: absolute;
   background-color: white;
   border-bottom: 0.5px solid lightgrey;
+  overflow-y: scroll;
+  max-height: 300px;
   z-index:2;
 }
 

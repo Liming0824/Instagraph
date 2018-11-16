@@ -27,9 +27,7 @@ const uiReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type){
     case NOTICE_DROPDOWN:
-      let newState7 = Object.assign({}, state);
-      newState7['notice_dropdown'] = !newState7['notice_dropdown'];
-      return newState7;
+      return Object.assign({}, state, {notice_dropdown: !state.notice_dropdown});
     case OPEN_EDIT_DROPDOWN:
       let newState6 = Object.assign({}, state, {edit_dropdown: true});
       return newState6;
