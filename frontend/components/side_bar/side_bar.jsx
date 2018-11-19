@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import { searchUsersByIds } from '../../actions/user_actions';
 
-class SideBar extends React.Component{
+export class SideBar extends React.Component{
+
+  constructor(props){
+    super(props);
+  }
 
   componentDidMount(){
-    const arr = this.props.followings.map(user => user.id)
+    const arr = this.props.followings.map(user => user.id);
     this.props.searchUsersByIds(arr);
   }
 
   getDateDiff(data) {
+      if(!data) return false;
       let timePublish = new Date(data);
       let timeNow = new Date();
       let minute = 1000 * 60;
@@ -66,25 +71,26 @@ class SideBar extends React.Component{
   render(){
     const friends = this.props.followings;
     let items = friends.map((friend, idx) => {
-      let time;
-      if(friend.posts.length > 0){
-        time = this.getDateDiff.bind(this, friend.posts[friend.posts.length-1].created_at)();
-      }
+        let time;
+        if(friend.posts.length > 0){
+          time = this.getDateDiff.bind(this, friend.posts[friend.posts.length-1].created_at)();
+        }
 
-      return(
-        <li className="friend-item" onClick={this.handleFriendClick.bind(this,friend)} key={idx}>
-          <div className='for-rainbow'>
-            <div className="item-box">
-              <img src={friend.photo_image_url}/>
+        return(
+          <li className="friend-item" onClick={this.handleFriendClick.bind(this,friend)} key={idx}>
+            <div className='for-rainbow'>
+              <div className="item-box">
+                <img src={friend.photo_image_url}/>
+              </div>
             </div>
-          </div>
-          <div className="info-div">
-            <span>{friend.username}</span>
-            <strong>{time ? time : ''}</strong>
-          </div>
-        </li>
-      )
-    })
+            <div className="info-div">
+              <span>{friend.username}</span>
+              <strong>{time ? time : ''}</strong>
+            </div>
+          </li>
+        )
+      })
+
 
     return (
       <div className='side-bar-box'>

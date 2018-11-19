@@ -22,7 +22,6 @@ class SettingDropdown extends React.Component {
     return(
       <div className={`setting-dropdown-parent ${setting_status}`} onClick={this.props.closeSettingDropdown}>
         <div className='setting-dropdown-child' onClick={e => e.stopPropagation()}>
-
           <li onClick={this.handleLogoutClick.bind(this)}>Log Out</li>
           <li onClick={this.handleCancelClick.bind(this)}>Cancel</li>
         </div>

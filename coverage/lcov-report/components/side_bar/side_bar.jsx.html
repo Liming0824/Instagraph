@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for components/side_bar/side_bar.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">components/side_bar</a> side_bar.jsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60.42% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>29/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.89% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">36.36% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">61.7% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>29/47</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import { searchUsersByIds } from '../../actions/user_actions';
+&nbsp;
+export class SideBar extends React.Component{
+&nbsp;
+  constructor(props){
+    super(props);
+  }
+&nbsp;
+  componentDidMount(){
+    const arr = this.props.followings.map(<span class="fstat-no" title="function not covered" >us</span>er =&gt; <span class="cstat-no" title="statement not covered" >user.id)</span>;
+    this.props.searchUsersByIds(arr);
+  }
+&nbsp;
+  getDateDiff(data) {
+      let timePublish = new Date(data);
+      let timeNow = new Date();
+      let minute = 1000 * 60;
+      let hour = minute * 60;
+      let day = hour * 24;
+      let month = day * 30;
+      let diffValue = timeNow - timePublish;
+      let diffMonth = diffValue / month;
+      let diffWeek = diffValue / (7 * day);
+      let diffDay = diffValue / day;
+      let diffHour = diffValue / hour;
+      let diffMinute = diffValue / minute;
+      let result;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (diffValue &lt; 0) {
+<span class="cstat-no" title="statement not covered" >          alert("WRONG TIME");</span>
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (diffMonth &gt; 3) {
+<span class="cstat-no" title="statement not covered" >          result = timePublish.getFullYear() + "-";</span>
+<span class="cstat-no" title="statement not covered" >          result += timePublish.getMonth() + "-";</span>
+<span class="cstat-no" title="statement not covered" >          result += timePublish.getDate();</span>
+<span class="cstat-no" title="statement not covered" >          alert(result);</span>
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (diffMonth &gt; 1) {
+<span class="cstat-no" title="statement not covered" >          result = parseInt(diffMonth) + "  MONTHS AGO";</span>
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (diffWeek &gt; 1) {
+<span class="cstat-no" title="statement not covered" >          result = parseInt(diffWeek) + "  WEEKS AGO";</span>
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (diffDay &gt; 1) {
+<span class="cstat-no" title="statement not covered" >          result = parseInt(diffDay) + "  DAYS AGO";</span>
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (diffHour &gt; 1) {
+<span class="cstat-no" title="statement not covered" >          result = parseInt(diffHour) + "  HOURS AGO";</span>
+      }
+      else <span class="missing-if-branch" title="if path not taken" >I</span>if (diffMinute &gt; 1) {
+<span class="cstat-no" title="statement not covered" >          result = parseInt(diffMinute) + "  MINUTES AGO";</span>
+      }
+      else {
+          result = "JUST NOW";
+      }
+      return result;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleClick(){
+<span class="cstat-no" title="statement not covered" >    this.props.history.push(`/homepage/${this.props.currentUser.username}/${this.props.currentUser.id}`);</span>
+  }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleFriendClick(friend){
+<span class="cstat-no" title="statement not covered" >    this.props.history.push(`/homepage/${friend.username}/${friend.id}`);</span>
+  }
+&nbsp;
+  render(){
+    const friends = this.props.followings;
+    let items = friends.map(<span class="fstat-no" title="function not covered" >(f</span>riend, idx) =&gt; {
+        let time;
+<span class="cstat-no" title="statement not covered" >        if(friend.posts.length &gt; 0){</span>
+<span class="cstat-no" title="statement not covered" >          time = this.getDateDiff.bind(this, friend.posts[friend.posts.length-1].created_at)();</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return(</span>
+          &lt;li className="friend-item" onClick={this.handleFriendClick.bind(this,friend)} key={idx}&gt;
+            &lt;div className='for-rainbow'&gt;
+              &lt;div className="item-box"&gt;
+                &lt;img src={friend.photo_image_url}/&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div className="info-div"&gt;
+              &lt;span&gt;{friend.username}&lt;/span&gt;
+              &lt;strong&gt;{time ? time : ''}&lt;/strong&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        )
+      })
+    
+&nbsp;
+    return (
+      &lt;div className='side-bar-box'&gt;
+        &lt;div className='current-user-top'&gt;
+          &lt;img src={this.props.currentUser.photo_image_url} onClick={this.handleClick.bind(this)}/&gt;
+          &lt;span&gt;{this.props.currentUser.username}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div className='stories-and-watch-all'&gt;
+          &lt;span&gt;Stories&lt;/span&gt;
+          &lt;span&gt;watch all&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div className='friends-stories'&gt;
+          {items}
+        &lt;/div&gt;
+        &lt;footer&gt;
+&nbsp;
+          &lt;div&gt;
+            @2018 INSTAGRAPH
+          &lt;/div&gt;
+        &lt;/footer&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+&nbsp;
+&nbsp;
+const mapStateToProps = <span class="fstat-no" title="function not covered" >(s</span>tate, ownProps) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    users: Object.values(state.entities.users),
+    currentUser: state.entities.users[state.session.currentUserId],
+    followings: state.entities.users[state.session.currentUserId].followings,
+  }
+}
+&nbsp;
+const mapDispatchToProps = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return{</span>
+    searchUsersByIds: <span class="fstat-no" title="function not covered" >(a</span>rr) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(searchUsersByIds(arr))</span>
+  }
+}
+&nbsp;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideBar));
+&nbsp;
+// add into footer, before @2018
+// &lt;div&gt;
+//   About Us * Support * Press * Api * Jobs * Privacy *
+//   Terms * Directory * Profiles * Hashtags * Language
+// &lt;/div&gt;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 21:52:51 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

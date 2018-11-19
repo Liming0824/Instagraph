@@ -6,7 +6,7 @@ import { fetchPost } from '../../actions/post_actions';
 import { createComment, deleteComment } from '../../actions/comment_actions';
 import { openCommentDropdown, closeCommentDropdown } from '../../actions/modal_actions';
 
-class PostItem extends React.Component {
+export class PostItem extends React.Component {
   constructor(props){
     super(props);
     this.state={

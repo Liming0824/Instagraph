@@ -18,7 +18,7 @@ const App = () => {
       <header>
         <ProtectedRoute path='/' component={NavBar} />
       </header>
-
+      <div className="divname"></div>
       <AuthRoute exact path="/login"  component={GreetingContainer} />
       <AuthRoute  exact path='/' component={GreetingContainer} />
       <ProtectedRoute exact path='/homepage' component={HomePageContainer} />
