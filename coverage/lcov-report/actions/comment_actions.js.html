@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for util/user_api_util.js</title>
+    <title>Code coverage report for actions/comment_actions.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">util</a> user_api_util.js
+      <a href="../index.html">All files</a> / <a href="index.html">actions</a> comment_actions.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">41.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>7/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,16 +32,16 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>0/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">41.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>7/17</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -90,29 +90,14 @@
 45
 46
 47
-48
-49
-50</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,10 +113,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,57 +126,64 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const fetchUsers = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'GET',
-    url: `api/users/`
-  });
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as CommentAPIUtil from '../util/comment_api_util.js';
+&nbsp;
+export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
+&nbsp;
+export const receiveComment = <span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: RECEIVE_COMMENT,
+    comment: comment
+  };
 };
 &nbsp;
 &nbsp;
 &nbsp;
-&nbsp;
-export const fetchUser = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: "GET",
-    url: `api/users/${id}`
-  });
-};
-&nbsp;
-export const updateUser = <span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'PATCH',
-    url: `api/users/${user.id}`,
-    data: user,
-    contentType: false,
-    processData: false
-  });
+export const removeComment = <span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    type: REMOVE_COMMENT,
+    comment: comment
+  };
 };
 &nbsp;
 &nbsp;
-export const searchUsers = <span class="fstat-no" title="function not covered" >(q</span>uery) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'GET',
-    url: '/api/users/search',
-    data: {
-      query: query
+export const createComment = <span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return CommentAPIUtil.createComment(comment).then(<span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      return dispatch(receiveComment(comment));</span>
+    },
+<span class="fstat-no" title="function not covered" >    er</span>rors =&gt; {
+<span class="cstat-no" title="statement not covered" >      return dispatch({type: RECEIVE_COMMENT_ERRORS, errors: errors.responseJSON });</span>
     }
-  });
+  );
+  };
 };
 &nbsp;
-// this is a test api ajax function
-export const searchUsersByIds = <span class="fstat-no" title="function not covered" >(i</span>d_arr) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'GET',
-    url: '/api/users/search_by_ids',
-    data: {
-      arr: id_arr
+&nbsp;
+export const deleteComment = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return CommentAPIUtil.destroyComment(id).then(<span class="fstat-no" title="function not covered" >co</span>mment =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      return dispatch(removeComment(comment));</span>
+    },
+<span class="fstat-no" title="function not covered" >    er</span>rors =&gt; {
+<span class="cstat-no" title="statement not covered" >      return dispatch({type: RECEIVE_COMMENT_ERRORS, errors: errors.responseJSON });</span>
     }
-  });
+  );
+  };
 };
-// test over
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

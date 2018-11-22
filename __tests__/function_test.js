@@ -13,7 +13,7 @@ describe('SideBar', () => {
       followings: [],
       searchUsersByIds: jest.fn()
     };
-    const wrapper = Enzyme.shallow(<SideBar {...props}/>);
+    const wrapper = Enzyme.mount(<SideBar {...props}/>);
     const story = wrapper.instance();
     const spy = jest.spyOn(story, 'getDateDiff');
     const period = story.getDateDiff(new Date());

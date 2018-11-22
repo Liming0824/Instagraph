@@ -132,9 +132,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideBar));
-
-// add into footer, before @2018
-// <div>
-//   About Us * Support * Press * Api * Jobs * Privacy *
-//   Terms * Directory * Profiles * Hashtags * Language
-// </div>

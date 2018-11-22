@@ -10,8 +10,8 @@ import { OPEN_POST_DROPDOWN,
          CLOSE_EDIT_DROPDOWN,
          NOTICE_DROPDOWN,
        } from '../actions/modal_actions';
-import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
-import { RECEIVE_COMMENT } from '../actions/comment_actions';
+// import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
+// import { RECEIVE_COMMENT } from '../actions/comment_actions';
 
 const defaultState = {
   post_dropdown_open: false,

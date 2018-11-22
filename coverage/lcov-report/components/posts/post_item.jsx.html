@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for components/posts/post_item.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">components/posts</a> post_item.jsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>2/40</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>2/40</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import { createLike, deleteLike } from '../../actions/like_actions';
+import { fetchPost } from '../../actions/post_actions';
+import { createComment, deleteComment } from '../../actions/comment_actions';
+import { openCommentDropdown, closeCommentDropdown } from '../../actions/modal_actions';
+&nbsp;
+export class PostItem extends React.Component {
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(props){
+<span class="cstat-no" title="statement not covered" >    super(props);</span>
+<span class="cstat-no" title="statement not covered" >    this.state={</span>
+      commentValue: '',
+      commentId: null
+    };
+<span class="cstat-no" title="statement not covered" >    this.props.remove_error();</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleAuthorClick(){
+<span class="cstat-no" title="statement not covered" >    this.props.history.push(`/homepage/${this.props.user.username}/${this.props.user.id}`);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleLike(){
+<span class="cstat-no" title="statement not covered" >    if(this.props.liked){</span>
+<span class="cstat-no" title="statement not covered" >      this.props.deleteLike(this.props.post.id);</span>
+    }
+    else{
+<span class="cstat-no" title="statement not covered" >      this.props.createLike(this.props.post.id);</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleCommentImg(post){
+<span class="cstat-no" title="statement not covered" >    document.getElementsByClassName(`comment-input-bar-${this.props.post.id}`)[0].focus();</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  up</span>dateComment(e){
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      commentValue: e.target.value
+    });
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleComment(id){
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      commentId: id
+    });
+<span class="cstat-no" title="statement not covered" >    this.props.openCommentDropdown();</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleCancelComment(){
+<span class="cstat-no" title="statement not covered" >    this.props.closeCommentDropdown();</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleDeleteComment(id){
+<span class="cstat-no" title="statement not covered" >    this.props.deleteComment(id);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      commentId: null
+    });
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleSubmitComment(e){
+<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >    this.props.createComment({post_id: this.props.post.id, body: this.state.commentValue});</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      commentValue: ''
+    });
+  }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleShare(){
+&nbsp;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleTag(){
+&nbsp;
+  }
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  re</span>nder(){
+    const users = <span class="cstat-no" title="statement not covered" >this.props.users;</span>
+    const deleteable = <span class="cstat-no" title="statement not covered" >this.props.deleteable;</span>
+    const currentUser = <span class="cstat-no" title="statement not covered" >this.props.currentUser;</span>
+    const status = <span class="cstat-no" title="statement not covered" >this.props.status;</span>
+    const comment_id = <span class="cstat-no" title="statement not covered" >this.state.commentId;</span>
+    const items = <span class="cstat-no" title="statement not covered" >this.props.comments.map(<span class="fstat-no" title="function not covered" >(c</span>omment, idx) =&gt; {</span>
+      const author = <span class="cstat-no" title="statement not covered" >users[comment.author_id];</span>
+      const deleteable_status = <span class="cstat-no" title="statement not covered" >status &amp;&amp; (comment.id === comment_id) ? "" : 'hidden';</span>
+<span class="cstat-no" title="statement not covered" >      return (</span>
+        &lt;ul key={idx}&gt;
+          &lt;li key={comment.id} onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt;{
+<span class="cstat-no" title="statement not covered" >              if(author.id === currentUser.id || deleteable){</span>
+<span class="cstat-no" title="statement not covered" >                this.handleComment.bind(this, comment.id)();</span>
+              }
+            }}&gt;
+            &lt;strong&gt;{author.username}&lt;/strong&gt;
+            &lt;span&gt;{comment.body}&lt;/span&gt;
+          &lt;/li&gt;
+          &lt;div className={`comment-dropdown ${deleteable_status}`}&gt;
+            &lt;button onClick={this.handleCancelComment.bind(this)}&gt;Cancel&lt;/button&gt;
+            &lt;button onClick={this.handleDeleteComment.bind(this, comment.id)}&gt;Delete&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/ul&gt;
+      )
+    })
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;div className="post-top-comment"&gt;
+        &lt;ul className="post-top"&gt;
+          &lt;div className="post-author-img" onClick={this.handleAuthorClick.bind(this)}&gt;
+            &lt;img src={this.props.user.photo_image_url} /&gt;
+          &lt;/div&gt;
+          &lt;div className="post-author-name"&gt;
+            &lt;p&gt;{this.props.user.username}&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/ul&gt;
+        &lt;ul className="post-item-box"&gt;
+          &lt;img src={this.props.post.photo_image_url} /&gt;
+        &lt;/ul&gt;
+        &lt;ul className="comment"&gt;
+          &lt;div className="comment-icons"&gt;
+            &lt;a className="comment-like" onClick={this.handleLike.bind(this)}&gt;&lt;img src={this.props.liked ? window.redlikeImg : window.likeImg}/&gt;&lt;/a&gt;
+            &lt;a className="comment-write" onClick={this.handleCommentImg.bind(this, this.props.post)}&gt;&lt;img src={window.commentImg}/&gt;&lt;/a&gt;
+&nbsp;
+          &lt;/div&gt;
+          &lt;div className="likes-count"&gt;{this.props.post.likes.length} likes&lt;/div&gt;
+          &lt;div className="comment-content"&gt;
+            {items}
+            &lt;li&gt;
+              &lt;form onSubmit={this.handleSubmitComment.bind(this)}&gt;
+                &lt;input className={`comment-input-bar-${this.props.post.id}`} required type='text' value={this.state.commentValue} onChange={this.updateComment.bind(this)} placeholder='want to say something?'/&gt;
+                &lt;input type='submit' hidden /&gt;
+              &lt;/form&gt;
+              &lt;p className='error-messages'&gt;{this.props.errors}&lt;/p&gt;
+            &lt;/li&gt;
+          &lt;/div&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+&nbsp;
+const mapStateToProps = <span class="fstat-no" title="function not covered" >(s</span>tate, ownProps) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return{</span>
+    status: state.ui.comment_dropdown,
+    currentUser: state.entities.users[state.session.currentUserId],
+    errors: state.errors.commentForm,
+    users: state.entities.users,
+    user: state.entities.users[ownProps.post.posterId],
+    liked: ownProps.post.likes.includes(state.session.currentUserId),
+    comments: Object.values(ownProps.post.comments),
+    deleteable: ownProps.post.posterId === state.session.currentUserId
+  }
+}
+&nbsp;
+const mapDispatchToProps = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    openCommentDropdown: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >dispatch(openCommentDropdown()),</span>
+    closeCommentDropdown: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >dispatch(closeCommentDropdown()),</span>
+    createLike: <span class="fstat-no" title="function not covered" >(p</span>ost_id) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(createLike(post_id)),</span>
+    deleteLike: <span class="fstat-no" title="function not covered" >(p</span>ost_id) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(deleteLike(post_id)),</span>
+    createComment: <span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(createComment(comment)),</span>
+    deleteComment: <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(deleteComment(id)),</span>
+    remove_error: <span class="fstat-no" title="function not covered" >()</span>=&gt; <span class="cstat-no" title="statement not covered" >dispatch({type: `REMOVE_ERROR`})</span>
+  }
+}
+&nbsp;
+&nbsp;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostItem));
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 13:11:36 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

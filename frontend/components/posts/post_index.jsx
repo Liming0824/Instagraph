@@ -11,7 +11,7 @@ const override = css`
     border-color: red;
 `;
 
-class PostIndex extends React.Component {
+export class PostIndex extends React.Component {
   constructor(props){
     super(props);
     this.props.removeErrors();

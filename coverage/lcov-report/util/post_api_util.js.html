@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for util/user_api_util.js</title>
+    <title>Code coverage report for util/post_api_util.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">util</a> user_api_util.js
+      <a href="../index.html">All files</a> / <a href="index.html">util</a> post_api_util.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>4/8</span>
       </div>
     </div>
   </div>
@@ -76,26 +76,8 @@
 31
 32
 33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+34</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,16 +86,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,59 +109,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const fetchUsers = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const fetchPosts = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
     method: 'GET',
-    url: `api/users/`
+    url: '/api/posts'
   });
 };
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
-export const fetchUser = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
+export const fetchPost = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: "GET",
-    url: `api/users/${id}`
+    method: 'GET',
+    url: `/api/posts/${id}`
   });
 };
 &nbsp;
-export const updateUser = <span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {
+&nbsp;
+export const createPost = <span class="fstat-no" title="function not covered" >(p</span>ost) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'PATCH',
-    url: `api/users/${user.id}`,
-    data: user,
+    method: 'POST',
+    url: `/api/posts`,
+    data: post,
     contentType: false,
     processData: false
   });
 };
 &nbsp;
 &nbsp;
-export const searchUsers = <span class="fstat-no" title="function not covered" >(q</span>uery) =&gt; {
+export const deletePost = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'GET',
-    url: '/api/users/search',
-    data: {
-      query: query
-    }
+    method: 'DELETE',
+    url: `/api/posts/${id}`
   });
 };
-&nbsp;
-// this is a test api ajax function
-export const searchUsersByIds = <span class="fstat-no" title="function not covered" >(i</span>d_arr) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return $.ajax({</span>
-    method: 'GET',
-    url: '/api/users/search_by_ids',
-    data: {
-      arr: id_arr
-    }
-  });
-};
-// test over
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

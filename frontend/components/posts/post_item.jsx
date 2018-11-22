@@ -65,17 +65,6 @@ export class PostItem extends React.Component {
     });
   }
 
-
-  handleShare(){
-
-  }
-
-  handleTag(){
-
-  }
-
-
-
   render(){
     const users = this.props.users;
     const deleteable = this.props.deleteable;

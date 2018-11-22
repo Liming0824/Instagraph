@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot <PostIndex /> snapshot match 1`] = `
+<div
+  className="post-item-box"
+>
+  <div
+    className="css-1nyi826"
+  >
+    <div
+      className="css-1izzguw"
+    />
+    <div
+      className="css-4bzpi4"
+    />
+    <div
+      className="css-134b1y3"
+    />
+    <div
+      className="css-ht3zcn"
+    />
+    <div
+      className="css-1hu78i0"
+    />
+    <div
+      className="css-jsdrog"
+    />
+    <div
+      className="css-bkcxpe"
+    />
+    <div
+      className="css-1mmzqo5"
+    />
+  </div>
+</div>
+`;
+
+exports[`match snapshot <SideBar /> snapshot match 1`] = `
+<div
+  className="side-bar-box"
+>
+  <div
+    className="current-user-top"
+  >
+    <img
+      onClick={[Function]}
+    />
+    <span />
+  </div>
+  <div
+    className="stories-and-watch-all"
+  >
+    <span>
+      Stories
+    </span>
+    <span>
+      watch all
+    </span>
+  </div>
+  <div
+    className="friends-stories"
+  />
+  <footer>
+    <div>
+      @2018 INSTAGRAPH
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`should render 0 1`] = `
+<div
+  className="side-bar-box"
+>
+  <div
+    className="current-user-top"
+  >
+    <img
+      onClick={[Function]}
+    />
+    <span />
+  </div>
+  <div
+    className="stories-and-watch-all"
+  >
+    <span>
+      Stories
+    </span>
+    <span>
+      watch all
+    </span>
+  </div>
+  <div
+    className="friends-stories"
+  />
+  <footer>
+    <div>
+      @2018 INSTAGRAPH
+    </div>
+  </footer>
+</div>
+`;

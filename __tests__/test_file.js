@@ -16,3 +16,11 @@ describe('Addition', () => {
 
 
 });
+
+
+// before test :
+// need add '.babelrc' file,
+// presets env as:
+//{
+// "presets": ["env", "react"]
+//}

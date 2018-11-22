@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       delete '/follows' => 'users#destroyFollow'
       post '/follows' => 'users#createFollow'
       patch '/follows' => 'users#updateFollow'
+      # resources :follows, only: [:destroy]
     end
     resource :session, only: [:new, :create, :destroy]
     resources :posts, only: [:create, :index, :show, :destroy] do
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       post '/likes' => 'posts#createLike'
       post '/comments' => 'posts#createComment'
     end
+
     resources :comments, only: [:destroy]
   end
 end
