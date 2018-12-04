@@ -15,6 +15,7 @@ import NavBar from './nav_bar/nav_bar';
 const App = () => {
   return (
     <div>
+      
       <header>
         <ProtectedRoute path='/' component={NavBar} />
       </header>

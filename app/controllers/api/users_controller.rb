@@ -34,7 +34,8 @@ class Api::UsersController < ApplicationController
 
   def search
     if params[:query].present?
-      @users = User.where('username ~ ?', params[:query])
+      query_string = "%#{params[:query]}%".downcase
+      @users = User.where("LOWER(username) LIKE ?", query_string)
     else
       @user = User.none
     end
