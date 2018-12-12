@@ -23,6 +23,7 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
   App.room = App.cable.subscriptions.create(
     {channel: "RoomChannel", room: 'SocketRoom'},
     {
+      // receive whatever RoomChannel broadcasted
       received: function(data){
         const message = data.message;
         if(message.action === 'follow'){
@@ -31,9 +32,13 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
           removeFollow(message.message);
         }
       },
+      // goes to the RoomChannel file, find follow/unfollow function
+      // perform "follow/unfollow" function means the function RoomChannel
+      // and what we have in the object will be the argunment that passed in
       follow: function(id) {
         return this.perform('follow', { message: id, action: 'follow' });
       },
+      // goes to the RoomChannel file, find follow/unfollow function
       unfollow: function(id) {
         return this.perform('unfollow', {message: id, action: 'unfollow' });
       }
@@ -47,6 +52,7 @@ export const ListenFollow = (currentUser_id, receiveFollow, removeFollow) => {
 export const createFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.createFollow(followee_id).then(follow => {
+    // goes to the "App.cable.subscriptions.create" follow
       App.room.follow(follow);
       }
   );
@@ -56,6 +62,7 @@ export const createFollow = (followee_id) => {
 export const destroyFollow = (followee_id) => {
   return (dispatch) => {
     return FollowAPIUtil.destroyFollow(followee_id).then(follow => {
+    // goes to the "App.cable.subscriptions.create" unfollow
       App.room.unfollow(follow);
     }
   );
