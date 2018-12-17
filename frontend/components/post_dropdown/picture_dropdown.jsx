@@ -19,13 +19,43 @@ class PictureDropdown extends React.Component {
 
 
 
-  componentDidUpdate(preProps){
-    if(this.props.post && (preProps.post === null || preProps.post.likes.length !== this.props.post.likes.length)){
-      this.setState({
-        liked: this.props.post.likes.includes(this.props.currentUserId)
-      });
+  // componentDidUpdate(preProps){
+  //   if(this.props.post && (preProps.post === null || preProps.post.likes.length !== this.props.post.likes.length)){
+  //     this.setState({
+  //       liked: this.props.post.likes.includes(this.props.currentUserId)
+  //     });
+  //   }
+  // }
+
+  // testing function
+  handleLike(){
+    if(this.props.liked){
+      this.props.deleteLike(this.props.post.id);
+    }
+    else{
+      this.props.createLike(this.props.post.id);
     }
   }
+
+  //testing function
+  handleDeleteComment(id){
+    this.props.deleteComment(id);
+    this.setState({
+      commentId: null
+    });
+  }
+
+  //testing function
+  updateComment(e){
+    this.setState({
+      commentValue: e.target.value
+    });
+  }
+
+
+
+
+
 
   handleRemove(id){
     this.props.deletePost(id);
@@ -34,9 +64,9 @@ class PictureDropdown extends React.Component {
 
 
 
+
   render() {
     const pic_status = this.props.status ? '' : 'hidden';
-
     return(
       <div className={`picture-dropdown-parent ${pic_status}`} onClick={this.props.closePictureDropdown}>
         <div className='picture-dropdown-child' onClick={e => e.stopPropagation()}>

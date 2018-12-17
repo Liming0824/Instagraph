@@ -214,10 +214,12 @@
 }
 
 .comment-content ul button{
-  padding: 3px;
+  padding: 3px 5px;
   font-size: 14px;
-  border: 0.5px solid lightgrey;
-  border-radius: 5px;
+  color: white;
+  border: 0.5px solid white;
+  background-color: grey;
+  border-radius: 0px 7px 7px 0px;
 }
 
 .comment-dropdown{

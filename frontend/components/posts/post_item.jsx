@@ -11,13 +11,29 @@ export class PostItem extends React.Component {
     super(props);
     this.state={
       commentValue: '',
-      commentId: null
+      commentId: null,
+      length: '200px',
+      placeholder: '  want to say something?',
     };
     this.props.remove_error();
   }
 
   handleAuthorClick(){
     this.props.history.push(`/homepage/${this.props.user.username}/${this.props.user.id}`);
+  }
+
+  onFocus(){
+    this.setState({
+      length: '300px',
+      placeholder: ''
+    });
+  }
+
+  onBlur(){
+    this.setState({
+      length: '200px',
+      placeholder: '  want to say something?'
+    });
   }
 
   handleLike(){
@@ -75,17 +91,17 @@ export class PostItem extends React.Component {
       const author = users[comment.author_id];
       const deleteable_status = status && (comment.id === comment_id) ? "" : 'hidden';
       return (
-        <ul key={idx}>
-          <li key={comment.id} onClick={()=>{
+        <ul key={idx} onMouseLeave={this.handleCancelComment.bind(this)}>
+          <li key={comment.id} onMouseOver={()=>{
               if(author.id === currentUser.id || deleteable){
                 this.handleComment.bind(this, comment.id)();
               }
-            }}>
+            }}
+            >
             <strong>{author.username}</strong>
             <span>{comment.body}</span>
           </li>
           <div className={`comment-dropdown ${deleteable_status}`}>
-            <button onClick={this.handleCancelComment.bind(this)}>Cancel</button>
             <button onClick={this.handleDeleteComment.bind(this, comment.id)}>Delete</button>
           </div>
         </ul>
@@ -115,7 +131,15 @@ export class PostItem extends React.Component {
             {items}
             <li>
               <form onSubmit={this.handleSubmitComment.bind(this)}>
-                <input className={`comment-input-bar-${this.props.post.id}`} required type='text' value={this.state.commentValue} onChange={this.updateComment.bind(this)} placeholder='want to say something?'/>
+                <input
+                   onFocus={this.onFocus.bind(this)}
+                   onBlur={this.onBlur.bind(this)}
+                   style={{width: this.state.length}}
+                   className={`comment-input-bar-${this.props.post.id}`}
+                   required type='text' value={this.state.commentValue}
+                   onChange={this.updateComment.bind(this)}
+                   placeholder={this.state.placeholder}
+                   />
                 <input type='submit' hidden />
               </form>
               <p className='error-messages'>{this.props.errors}</p>

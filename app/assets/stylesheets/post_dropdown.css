@@ -30,12 +30,13 @@
 }
 
 .comment-content form input{
-  background-color: #fafafa;
+    background-color: #fafafa;
     border: solid 1px #dbdbdb;
     padding: 3px 10px 4px 7px;
-    width: 200px;
+    box-shadow: none;
     height: 20px;
     border-radius: 2px;
+    transition: width 1s;
 }
 
 
