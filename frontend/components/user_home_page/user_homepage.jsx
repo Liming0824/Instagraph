@@ -75,7 +75,6 @@ class UserHomePage extends React.Component {
 
 
   render(){
-    debugger
     let ownerPosts;
     let items;
     if(this.props.pageOwner && (this.props.match.params.username === this.props.pageOwner.username)){
