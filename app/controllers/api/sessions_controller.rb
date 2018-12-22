@@ -6,6 +6,11 @@ class Api::SessionsController < ApplicationController
     )
     if @user
       login(@user)
+      debugger
+      # UserMailer.with(user: @user).welcome_email.deliver_now
+      email = UserMailer.welcome_email(@user)
+      email.deliver
+      debugger
       render 'api/users/show'
     else
       render json: ['Invalid username/password combination'], status: 401
