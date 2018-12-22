@@ -11,7 +11,10 @@ class Api::UsersController < ApplicationController
     if @user.save
       login(@user)
       # UserMailer.welcome_email(@user).deliver_now
-      UserMailer.with(user: @user).welcome_email.deliver_now
+      # UserMailer.with(user: @user).welcome_email.deliver_now
+
+      email = UserMailer.welcome_email(@user)
+      email.deliver
       render 'api/users/show'
     else
       render json: @user.errors.full_messages, status: 422
