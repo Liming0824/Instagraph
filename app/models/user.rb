@@ -9,7 +9,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_img_url    :string
-#  bio             :string
+#  bio             :string           default("")
 #
 
 class User < ApplicationRecord
@@ -24,6 +24,11 @@ class User < ApplicationRecord
   after_initialize :add_default_photo, on: [:create, :update]
 
   has_one_attached :user_photo
+
+  has_many :servers,
+  foreign_key: :user_id,
+  primary_key: :id,
+  class_name: 'Server'
 
 
   has_many :posts,

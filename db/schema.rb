@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_220811) do
+ActiveRecord::Schema.define(version: 2018_12_30_222559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 2018_10_02_220811) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name"
+    t.index ["name"], name: "index_channels_on_name"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -68,12 +73,28 @@ ActiveRecord::Schema.define(version: 2018_10_02_220811) do
     t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "channel_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["body"], name: "index_messages_on_body"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "image_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "servers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "channel_id", null: false
+    t.index ["channel_id"], name: "index_servers_on_channel_id"
+    t.index ["user_id"], name: "index_servers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

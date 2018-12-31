@@ -10,9 +10,6 @@ class Api::UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       login(@user)
-      # UserMailer.welcome_email(@user).deliver_now
-      # UserMailer.with(user: @user).welcome_email.deliver_now
-
       email = UserMailer.welcome_email(@user)
       email.deliver_now
       render 'api/users/show'
