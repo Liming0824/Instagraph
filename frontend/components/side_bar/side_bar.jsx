@@ -29,14 +29,14 @@ export class SideBar extends React.Component{
       let diffHour = diffValue / hour;
       let diffMinute = diffValue / minute;
       let result;
-      if (diffValue < 0) {
-          alert("WRONG TIME");
-      }
-      else if (diffMonth > 3) {
+      // if (diffValue < 0) {
+      //     // alert("WRONG TIME");
+      // }
+      if (diffMonth > 3) {
           result = timePublish.getFullYear() + "-";
           result += timePublish.getMonth() + "-";
           result += timePublish.getDate();
-          alert(result);
+          // alert(result);
       }
       else if (diffMonth > 1) {
           result = parseInt(diffMonth) + "  MONTHS AGO";
